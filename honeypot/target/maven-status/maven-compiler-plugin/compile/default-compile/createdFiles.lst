@@ -1,0 +1,10 @@
+com\gpdigital\honeypot\controllers\BaseController.class
+org\hibernate\dialect\SQLiteDialect$3.class
+org\hibernate\dialect\SQLiteDialect$1.class
+com\gpdigital\honeypot\UserDetailsServiceImpl\SharepointAuth.class
+org\hibernate\dialect\SQLiteDialect$SQLiteUniqueDelegate.class
+org\hibernate\dialect\SQLiteDialect$2.class
+com\gpdigital\honeypot\UserDetailsServiceImpl\CustomAuthenticationProvider.class
+org\hibernate\dialect\SQLiteDialect$4.class
+com\gpdigital\honeypot\UserDetailsServiceImpl\GrantedAuthorityImpl.class
+org\hibernate\dialect\SQLiteDialect.class

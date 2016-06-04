@@ -1,0 +1,166 @@
+body, html {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.clicked {
+	background: #aaa !important;
+	color: #fff !important;
+	color: #000;
+}
+
+header {
+	background-image: url("../images/artl-header-bg.jpg");
+	background-position: 20% 23%;
+	background-size: cover;
+}
+
+.acn-logo {
+	padding-top: 15px;
+	padding-bottom: 10px;
+	height: 155px;
+	float: right;
+}
+
+.acn-word-logo {
+	padding-top: 25px;
+	height: 70px;
+}
+
+.artl-text {
+	font-size: 24px;
+	margin-bottom: 40px;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.search-button {
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 6px !important;
+	border-bottom-right-radius: 6px !important;
+	border-bottom-left-radius: 0px !important;
+	font-size: 10.5px !important;
+	background-color: #000000 !important;
+	border-color: #000000 !important;
+}
+
+
+.btn-primary {
+	padding-left: 0;
+	border-radius: 0px;
+	border: none;
+	border-color: transparent !important;
+	background-color: #f5f5f5;
+	color: #000;
+}
+
+.btn-primary:hover {
+	background-color: #eeeeee;
+	color: #000;
+}
+
+.btn-primary:active {
+	background-color: #eeeeee !important;
+	color: #000;
+}
+
+.asset-table {
+	background-color: #f5f5f5;
+	line-height: 52px;
+	padding: 0px;
+	border-radius: 0px;
+	border: none transparent;
+	text-align: center;
+}
+
+.asset-table:hover {
+	background-color: #eeeeee;
+	color: #000;
+}
+
+.asset-table:active {
+	background-color: #aaaaaa;
+}
+
+.artl-table-header {
+	background: #000;
+	padding-left: 0px;
+	border-radius: 0px;
+	border: none transparent;
+	text-align: center;
+	color: #fff;
+}
+
+.PROD {
+	display: block;
+	background-color: #ff0000;
+	padding-left: 5px;
+	padding-right: 0px;
+}
+
+.COMP {
+	display: block;
+	background-color: #00b0f0;
+	padding-left: 5px;
+	padding-right: 0px;
+}
+
+.DOCU {
+	display: block;
+	background-color: #00b050;
+	padding-left: 5px;
+	padding-right: 0px;
+}
+
+.TOOL {
+	display: block;
+	background-color: #ffc000;
+	padding-left: 5px;
+	padding-right: 0px;
+}
+
+footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+}
+
+.btn-default {
+	color: #fff;
+	background-color: #090e0e !important;
+	border-color: #000 !important;
+}
+
+.form-top {
+	background: #090e0e;
+}
+
+.form-bottom {
+	background: #000;
+}
+
+button.btn {
+	background: green;
+}
+
+::selection {
+	background: #3c763d;
+}
+
+button.btn:focus {
+	outline: 0;
+	opacity: 0.6;
+	background: #3c763d;
+	color: #fff;
+}
+
+button.btn:active:focus, button.btn.active:focus {
+	outline: 0;
+	opacity: 0.6;
+	background: #3c763d;
+	color: #fff;
+}
