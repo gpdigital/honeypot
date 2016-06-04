@@ -33,7 +33,6 @@ public class BaseController {
 	@Autowired
 	GPBrandsService gpBrandsService;
 
-	
 	// List<ARTLAssetInfo> listARTLAssetInfo = new ArrayList<ARTLAssetInfo>();
 
 	@RequestMapping({ "/", "/index" })
@@ -45,8 +44,7 @@ public class BaseController {
 	@RequestMapping({ "/home" })
 	public String showHomePage(HttpServletRequest request) {
 		// return "home";
-		return "home";
-		// return "register";
+		return "home2";
 	}
 
 	@RequestMapping(value = "/searchAssets", method = RequestMethod.POST)
