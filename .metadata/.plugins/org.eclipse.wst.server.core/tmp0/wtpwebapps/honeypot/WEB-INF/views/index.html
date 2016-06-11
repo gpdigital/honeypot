@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HoneyPot Login</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="assets/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/form-elements.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+<link rel="stylesheet" type="text/css" href="css/register.css" />
+<script src="js/register.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<!-- Favicon and touch icons -->
+<!-- <link rel="shortcut icon" href="assets/ico/favicon.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" -->
+<!-- 	href="assets/ico/apple-touch-icon-144-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" -->
+<!-- 	href="assets/ico/apple-touch-icon-114-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" -->
+<!-- 	href="assets/ico/apple-touch-icon-72-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" -->
+<!-- 	href="assets/ico/apple-touch-icon-57-precomposed.png" /> -->
+
+<title>Login Form</title>
+
+</head>
+
+<!-- <body> -->
+
+<!-- 	<section> -->
+<!-- 		<div class="container"> -->
+<!-- 			<h1>ARTL</h1> -->
+<!-- 			<form id="login" method="post" name="login" -->
+<!-- 				th:action="@{/j_spring_security_check}"> -->
+<!-- 				<div> -->
+
+<!-- 					<div th:if="${loginError}" id="ptloginerrorcont" -->
+<!-- 						class="ps_login_error"> -->
+<!-- 						<div aria-level="2" class="ps_login_error_inner" role="heading"> -->
+<!-- 							<a id="error_link" tabIndex="1" name="error_link"> <img -->
+<!-- 								alt="Error" th:src="@{/images/PT_LOGIN_ERROR.gif}" /> -->
+<!-- 							</a> -->
+<!-- 							<div id="discovery_error" class="psloginerror" role="alert" -->
+<!-- 								aria-live="assertive" name="discovery_error"></div> -->
+<!-- 							<span id="login_error" class="psloginerror" role="alert" -->
+<!-- 								aria-live="assertive" name="login_error">Wrong user or -->
+<!-- 								password.</span> -->
+<!-- 						</div> -->
+<!-- 						<div id="browsercheck_error" class="ps_box-control psloginerror" -->
+<!-- 							role="alert" aria-live="assertive" name="browsercheck_error"></div> -->
+<!-- 					</div> -->
+
+<!-- 					<div> -->
+<!-- 						<span id="ptLabelUserid" class="ps_label-show"><label -->
+<!-- 							for="userid">User ID</label></span> -->
+<!-- 					</div> -->
+<!-- 					<div class="ps_box-control"> -->
+<!-- 						<input id="j_username" title="User ID" name="j_username" -->
+<!-- 							type="text"></input> -->
+<!-- 					</div> -->
+<!-- 					<div> -->
+<!-- 						<span id="ptLabelPassword" class="ps_label-show"><label -->
+<!-- 							for="pwd">Password</label></span> -->
+<!-- 					</div> -->
+<!-- 					<div class="ps_box-control"> -->
+<!-- 						<input id="j_password" title="Password" name="j_password" -->
+<!-- 							type="password"></input> -->
+<!-- 					</div> -->
+
+<!-- 					<div class="ps_box-button"> -->
+<!-- 						<input class="ps-button" name="Submit" value="Sign In" -->
+<!-- 							type="submit" -->
+<!-- 							aria-label='To enable Accessibility mode, please check the checkbox "Enable Accessibility Mode" before you sign in. Sign In'></input> -->
+<!-- 					</div> -->
+<!-- 					<footer id="ptfooter" class="ps_footer_text ">Copyright 2015, Accenture and/or its affiliates. All rights reserved. </footer> -->
+<!-- 				</div> -->
+
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
+
+
+<!-- </body> -->
+<body>
+
+	<!-- Top content -->
+	<div class="top-content">
+
+		<div class="inner-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h1>
+							<strong>HoneyPot</strong> Dashboard Login
+						</h1>
+						<div class="description">
+							<p>Improve your business by knowing your customers.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 form-box">
+						<div class="form-top">
+							<div class="form-top-left">
+								<h3>Login to HoneyPot old</h3>
+								<p>Enter your username and password:</p>
+							</div>
+							<div class="form-top-right">
+								<i class="fa fa-lock"></i>
+							</div>
+						</div>
+						<div class="form-bottom">
+							<form id="login" method="post" name="login"
+								th:action="@{/j_spring_security_check}">
+								<div class="form-group">
+									<label class="sr-only" for="j_username">Username</label> <input
+										type="text" name="j_username" placeholder="Username..."
+										class="form-username form-control" id="j_username" />
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="j_password">Password</label> <input
+										type="password" name="j_password" placeholder="Password..."
+										class="form-password form-control" id="j_password" />
+								</div>
+								<button type="submit" class="btn">Sign in!</button>
+								<button type="button" class="btn reg"
+								onclick="javascript:registerPage()">Register</button>
+							</form>
+							<form id="formRegister">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" /> 
+							</form>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- Javascript -->
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+
+	<!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+</body>
+</html>

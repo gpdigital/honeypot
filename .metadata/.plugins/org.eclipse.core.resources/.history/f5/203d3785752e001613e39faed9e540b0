@@ -1,0 +1,13 @@
+<div id="listahantab" >
+	<div th:fragment="listfrag2"  class="btn-group" >
+		<button id="buttonSummary" class="btn btn-default dropdown-toggle"
+					aria-expanded="false" style="width: 100%;" type="button"
+					data-toggle="dropdown"> Choose a Page <span class="caret"></span></button>
+		<ul  class="dropdown-menu" style="text-align: center; float: right; min-width: 100%;">
+			<li th:each="fbPage:${listahan}">
+				<a th:onclick="'javascript:listChange(\''+${fbPage.fbPageName}+'\')'" th:text = "${fbPage.fbPageName}">1234</a>
+			</li>
+		</ul>
+	</div>
+</div>
+							

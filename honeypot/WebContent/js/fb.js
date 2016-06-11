@@ -14,7 +14,6 @@
             document.getElementById('login_status').innerHTML = "Welcome " + response.first_name + " " + response.last_name;
           });
             document.getElementById('login').style.display = 'none';
-            document.getElementById('page_search').style.display = 'block';
           } else if (response.status === 'not_authorized') {
             document.getElementById('status').innerHTML = 'We are not logged in.'
           } else {
@@ -48,16 +47,20 @@
     }
     
     // getting basic user info
-    function getPageInfo() {
+    function getPageInfo(page) {
       document.getElementById('comments_list').style.display = 'none';
       document.getElementById('likes_list').style.display = 'none';
       document.getElementById('post_info').style.display = 'none';
       document.getElementById('comment_filter').style.display = 'none';
+      document.getElementById('comment_filter2').style.display = 'none';
       document.getElementById('comment_info').style.display = 'none';
       document.getElementById('comment_reply').style.display = 'none';
       document.getElementById('filter_list').style.display = 'none';
-      FB.api('/'+document.getElementById('page_name').value, 'GET', {fields: 'name,about,founded,likes'}, function(response) {
-        document.getElementById('page_info').style.display = 'block';
+      document.getElementById('comment_filter').innerHTML = '';
+    	  document.getElementById('comment_filter2').innerHTML = ''; 
+//      FB.api('/'+document.getElementById('page_name').value, 'GET', {fields: 'name,about,founded,likes'}, function(response) {
+    FB.api('/'+page, 'GET', {fields: 'name,about,founded,likes'}, function(response) {
+    	document.getElementById('page_info').style.display = 'block';
         document.getElementById('page_info').innerHTML = 
           "Page Name: " + response.name + "<br>" + 
           "About: " + response.about + "<br>" + 
@@ -65,11 +68,11 @@
           "Likes: " + response.likes + "<br><br>";
         console.log(response);
       });
-      getPagePost();
+      getPagePost(page);
     }
 
-    function getPagePost(){
-      FB.api('/'+document.getElementById('page_name').value, 'GET', {fields: 'posts{id,message,shares,likes.limit(0).summary(true),comments.limit(0).summary(true)}'}, function(response) {
+    function getPagePost(page){
+      FB.api('/'+page, 'GET', {fields: 'posts{id,message,shares,likes.limit(0).summary(true),comments.limit(0).summary(true)}'}, function(response) {
         //getLikesList2('74646332592173_1052192031504265', '0', '');
         document.getElementById('page_post').style.display = 'block';
         //document.getElementById('page_post').innerHTML = JSON.stringify(response.posts.data[0]);
@@ -137,86 +140,9 @@
       });
     }
 
-    function getLikesList(post_id, state, next){
-      document.getElementById('likes_list').style.display = 'block';
-      document.getElementById('post_info').style.display = 'block';
-      document.getElementById('page_post').style.display = 'none';
-      var dummy;
-      FB.api('/'+post_id, 'GET', {fields: 'message,likes.summary(true)'}, function(response) {
-        document.getElementById('post_info').innerHTML = "Post ID: " + post_id + "<br>Post Message: " + response.message + "<br>Likes: " + response.likes.summary.total_count + "<br><br>";
-      });
-      dummy = '<table border = "1" style = "width:100%" class="table" ><tr><td style="width:50%" >ID</td><td style="width:50%" >Name</td></tr>';
-      var next_list;
-      if(state == 0)
-        next_list = '';
-      else if(state == 1)
-        next_list = ".before("+next+")";
-      else if(state == 2)
-        next_list = ".after("+next+")";
-
-      FB.api('/'+post_id, 'GET', {fields: 'likes.pretty(0).limit(100)'+next_list}, function(response) {
-        for(var i = 0; i < (response.likes.data).length; i++){
-          dummy = dummy + '<tr><td style="width:50%" >' + response.likes.data[i].id + '</td><td style="width50%" >' + response.likes.data[i].name + '</td></tr>';
-        }
-        dummy = dummy + '<tr><td style="width:50%" ><button onclick="getLikesList(' + "'" + post_id + "','1','" + response.likes.paging.cursors.before + "'" + ')" >Previous</button></td><td style="width50%" ><button onclick="getLikesList(' + "'" + post_id + "','2','" + response.likes.paging.cursors.after + "'" + ')" >Next</button></tr></table>';
-        document.getElementById('likes_list').innerHTML = dummy;
-
-        /*
-        var form_data = {
-          page_name: document.getElementById('page_name').value,
-          id: [],
-          name: [],
-          dataType: 'json',
-          ajax: '1' 
-        };
-        
-
-        for(var i = 0; i < (response.likes.data).length; i++){
-          form_data.id.push(response.likes.data[i].id );
-          form_data.name.push(response.likes.data[i].name );
-        }
-        alert(JSON.stringify(response.likes.paging));
-
-        $.ajax({
-          url: "user_list.php",
-            type: 'POST',
-            data: form_data,
-            success: function(mesg) {
-              alert(mesg);
-            }
-          });
-        */
-      });
-
-      db_insert(post_id, '');
-
-    }
-
-    function getLikesList2(post_id, state, next){
-      document.getElementById('likes_list').style.display = 'block';
-      document.getElementById('post_info').style.display = 'block';
-      document.getElementById('page_post').style.display = 'none';
-      var dummy;
-      alert("likes");
-      FB.api('/'+post_id, 'GET', {fields: 'message,likes.summary(true)'}, function(response) {
-        document.getElementById('post_info').innerHTML = "Post ID: " + post_id + "<br>Post Message: " + response.message + "<br>Likes: " + response.likes.summary.total_count + "<br><br>";
-      });
-      dummy = '<table border = "1" style = "width:100%" class="table" >';
-      var next_list;
-      alert(dummy);
-      FB.api('/'+post_id, 'GET', {fields: 'likes.pretty(0).limit(100)'}, function(response) {
-        for(var i = 0; i < (response.likes.data).length; i++){
-          dummy = dummy + '<tr><td style="width:50%" >' + response.likes.data[i].id + '</td></tr>';
-        }
-        dummy = dummy + '</table>';
-        document.getElementById('likes_list').innerHTML = dummy;
-
-        
-      });
-    }
-
     var datus = new Array();
     var comment_counter;
+    
     function getCommentsList(post_id, state, next){
       document.getElementById('comments_list').style.display = 'block';
       document.getElementById('post_info').style.display = 'block';
@@ -228,7 +154,7 @@
         comment_counter = 0;
         FB.api('/'+post_id, 'GET', {fields: 'message,likes.summary(true)'}, function(response) {
           var dum;
-          dum = "Post ID: " + post_id + "<br>Post Message: " + response.message + "<br>Likes: " + response.likes.summary.total_count + "<br><br>";
+          dum = "Post Message: " + response.message + "<br>Likes: " + response.likes.summary.total_count + "<br><br>";
           //document.getElementById('post_info').innerHTML = document.getElementById('post_info').innerHTML + 'Filter Word: <input type="text" id="filter_word"><br><button onclick="getCommentFilter(' + "'" + post_id + "','0',''" + ')" >Search Word</button><br><br>';
           document.getElementById('post_info').innerHTML = dum;
 
@@ -245,7 +171,7 @@
             dum = dum + filter.green[i] + ", ";
           }
           dum = dum + "<br>" + '<button onclick="getCommentFilter(' + "'" + post_id + "','0',''" + ')" >Search Word</button><br><br>';
-          document.getElementById('filter_list').innerHTML = dum;
+          //document.getElementById('filter_list').innerHTML = dum;
 
         });
       }
@@ -286,18 +212,9 @@
             dummy = dummy + '<tr><td style="width:20%" >' + datus[i].id + '</td><td style="width:20%" >' + datus[i].name + '</td><td style="width:10%" >' + datus[i].likes + '</td><td style="width:10%" >' + datus[i].comments  + '</td><td style="width:40%" >' + datus[i].message + '</td></tr>';  
           }
           dummy = dummy + "</table>";
-          document.getElementById('comments_list').innerHTML = dummy;
+          //document.getElementById('comments_list').innerHTML = dummy;
+          getCommentFilter(post_id);
         }
-        /*
-        var dummy;
-        dummy = '<table border = "1" style = "width:100%" ><tr><td style="width:20%" >Comment ID</td><td style="width:20%" >Commentor</td><td style="width:10%" >Likes</td><td style="width:10%" >Comments Count</td><td style="width:40%" >Message</td></tr>';
-        for(var i = 0; i < (response.comments.data).length; i++){
-          dummy = dummy + '<tr><td style="width:20%" >' + response.comments.data[i].id + '</td><td style="width:20%" >' + response.comments.data[i].from.name + '<br>' + response.comments.data[i].from.id + '</td><td style="width:10%" >' + response.comments.data[i].like_count + '</td><td style="width:10%" >' + response.comments.data[i].comment_count + '<br><button onclick="getCommentReply(' + "'" + response.comments.data[i].id + "','0',''" + ')" >Reply</button>' + '</td><td style="width:40%" >' + response.comments.data[i].message + '</td></tr>'; 
-        }
-        dummy = dummy + "</table>";
-        dummy = dummy + '<br><button onclick="getCommentsList(' + "'" + post_id + "','1','" + response.comments.paging.cursors.before + "'" + ')" >Previous</button></td><td style="width50%" ><button onclick="getCommentsList(' + "'" + post_id + "','2','" + response.comments.paging.cursors.after + "'" + ')" >Next</button>';
-        document.getElementById('comments_list').innerHTML = dummy;
-        */
       });
     }
 
@@ -306,9 +223,10 @@
 
 
 
-    function getCommentFilter(post_id, state, next){
+    function getCommentFilter(post_id){
       document.getElementById('comments_list').style.display = 'none';
       document.getElementById('comment_filter').style.display = 'block';
+      document.getElementById('comment_filter2').style.display = 'block';
       document.getElementById('page_post').style.display = 'none';
       var dummy;
       var red = 0;
@@ -343,35 +261,45 @@
             }
           }
         }
-        //alert(num);
+        
         dummy = dummy + "</table>";
-        document.getElementById('comment_filter').innerHTML = "red: " + red +"<br>yellow: " + yellow + "<br>green: " + green + "<br>" +  dummy;
-      
-
-      //document.getElementById('comments_list').innerHTML = dummy + "</table>"
-      /*
-      var next_list;
-      if(state == 0)
-        next_list = '';
-      else if(state == 1)
-        next_list = ".before("+next+")";
-      else if(state == 2)
-        next_list = ".after("+next+")";
-
-      FB.api('/'+post_id, 'GET', {fields: 'comments.pretty(0).limit(1000)' + next_list +'{from,message,comment_count,like_count}'}, function(response) {
-        var num = 0;
-        for(var i = 0; i < (response.comments.data).length; i++){
-          if(response.comments.data[i].message .search(document.getElementById('filter_word').value)>=0||document.getElementById('filter_word').value==''){
-            dummy = dummy + '<tr><td style="width:20%" >' + (num+1) + '. ' + response.comments.data[i].id + '</td><td style="width:20%" >' + response.comments.data[i].from.name + '</td><td style="width:10%" >' + response.comments.data[i].like_count + '</td><td style="width:10%" >' + response.comments.data[i].comment_count + '</td><td style="width:40%" >' + response.comments.data[i].message + '</td></tr>';
-            num++;  
-          }
-        }
-        alert(num);
-        dummy = dummy + "</table>";
-        dummy = dummy + '<br><button onclick="getCommentsList(' + "'" + post_id + "','1','" + response.comments.paging.cursors.before + "'" + ')" >Previous</button></td><td style="width50%" ><button onclick="getCommentFilter(' + "'" + post_id + "','2','" + response.comments.paging.cursors.after + "'" + ')" >Next</button>';
-        document.getElementById('comment_filter').innerHTML = dummy;
-      });
-      */
+        document.getElementById('comment_filter').innerHTML = '<button onclick="filter_display('+"'green'"+')" class="btn btn-success" type="button">Positive <span class="badge">'+green+'</span></button><button onclick="filter_display('+"'yellow'"+')" class="btn btn-warning" type="button">Neutral <span class="badge">'+yellow+'</span></button><button onclick="filter_display('+"'red'"+')" class="btn btn-danger" type="button">Negative <span class="badge">'+red+'</span></button><br><br>';
+        
+        
+//        document.getElementById('comment_filter').innerHTML = "red: " + red +"<br>yellow: " + yellow + "<br>green: " + green + "<br>" +  dummy;
+    }
+    
+    
+    
+    function filter_display(input){
+    	var dummy = '<table border = "1" style = "width:100%" class="table" ><tr><td style="width:20%" >Comment ID</td><td style="width:20%" >Commentor</td><td style="width:10%" >Likes</td><td style="width:10%" >Comments Count</td><td style="width:40%" >Message</td></tr>';
+    	if(input=="green"){
+    		for(var i = 0; i < datus.length; i++){
+	    		for(var j=0;j<filter.green.length;j++){
+	                if(datus[i].message .search(filter.green[j])>=0){
+	                  dummy = dummy + '<tr><td style="width:20%" >' + datus[i].id + '</td><td style="width:20%" >' + datus[i].name + '</td><td style="width:10%" >' + datus[i].likes + '</td><td style="width:10%" >' + datus[i].comments +  '</td><td style="width:40%" bgcolor="#7df45d" >' + datus[i].message + '</td></tr>';
+	                }
+	              }
+    		}
+    	}else if(input=="yellow"){
+    		for(var i = 0; i < datus.length; i++){
+	    		for(var j=0;j<filter.yellow.length;j++){
+	                if(datus[i].message .search(filter.yellow[j])>=0){
+	                  dummy = dummy + '<tr><td style="width:20%" >' + datus[i].id + '</td><td style="width:20%" >' + datus[i].name + '</td><td style="width:10%" >' + datus[i].likes + '</td><td style="width:10%" >' + datus[i].comments +  '</td><td style="width:40%" bgcolor="#fdff24" >' + datus[i].message + '</td></tr>';
+	                }
+	              }
+    		}
+    	}else if(input=="red"){
+    		for(var i = 0; i < datus.length; i++){
+	    		for(var j=0;j<filter.red.length;j++){
+	                if(datus[i].message .search(filter.red[j])>=0){
+	                  dummy = dummy + '<tr><td style="width:20%" >' + datus[i].id + '</td><td style="width:20%" >' + datus[i].name + '</td><td style="width:10%" >' + datus[i].likes + '</td><td style="width:10%" >' + datus[i].comments +  '</td><td style="width:40%" bgcolor="#ff530f" >' + datus[i].message + '</td></tr>';
+	                  }
+	              }
+    		}
+    	}
+    	dummy = dummy + "</table>";
+        document.getElementById('comment_filter2').innerHTML = dummy;
     }
 
     function getCommentReply(comment_id, state, next){

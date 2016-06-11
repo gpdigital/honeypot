@@ -32,4 +32,5 @@ public class GPFbPagesServiceImpl implements GPFbPagesService{
 		return gpFbPagesDao.findFBPagesByBrandId(brandId);
 	}
 
+
 }

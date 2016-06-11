@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARTL Login</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="assets/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/form-elements.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+<link rel="stylesheet" type="text/css" href="css/register.css" />
+<script src="js/register.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<!-- Favicon and touch icons -->
+<!-- <link rel="shortcut icon" href="assets/ico/favicon.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" -->
+<!-- 	href="assets/ico/apple-touch-icon-144-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" -->
+<!-- 	href="assets/ico/apple-touch-icon-114-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" -->
+<!-- 	href="assets/ico/apple-touch-icon-72-precomposed.png" /> -->
+<!-- <link rel="apple-touch-icon-precomposed" -->
+<!-- 	href="assets/ico/apple-touch-icon-57-precomposed.png" /> -->
+
+<title>Login Form</title>
+
+</head>
+<body>
+
+	<!-- Top content -->
+	<div class="top-content">
+
+		<div class="inner-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h1>Register</h1>
+						<!-- 						<div class="description"> -->
+						<!-- 							<p>Improve your business by knowing your customers.</p> -->
+						<!-- 						</div> -->
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-sm-6 col-sm-offset-3 form-box">
+						<!-- 						<div class="form-top"> -->
+						<!-- 							<div class="form-top-left"> -->
+						<!-- 								<h3>Login to HoneyPot</h3> -->
+						<!-- 								<p>Enter your username and password:</p> -->
+						<!-- 							</div> -->
+						<!-- 							<div class="form-top-right"> -->
+						<!-- 								<i class="fa fa-lock"></i> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
+						<div class="form-bottom">
+							<div class="form-group">
+								<div id="errorBrandName" style="color: red; font-weight: 300;"></div>
+								<input type="text" name="newBrand" id="newBrand"
+									placeholder="Brand Name" class="form-username form-control" />
+							</div>
+							<div class="form-group">
+								<div id="errorFBPage" style="color: red; font-weight: 300;"></div>
+								<input type="text" name="newFBPage" id="newFBPage"
+									placeholder="FB Pages"
+									class="form-password form-control fbp-sq-in" />
+								<button class="btn reg-add" onclick="javascript:addFBPage()">ADD</button>
+							</div>
+
+							<div class="form-group">
+								<h2>FaceBook Pages</h2>
+								<table id="tableFBPages" th:fragment="fragmentFBPages">
+									<tr th:each="fbPage:${fbPages}">
+										<td th:text = "${fbPage.fbPageName}">1234</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="form-group">
+								<div id="errorUsername" style="color: red; font-weight: 300;"></div>
+								<input type="text" name="newUsername" id="newUsername"
+									placeholder="Username..." class="form-username form-control" />
+							</div>
+							<div class="form-group">
+								<div id="errorPassword" style="color: red; font-weight: 300;"></div>
+								<input type="password" name="newPassword" id="newPassword"
+									placeholder="Password..." class="form-password form-control" />
+
+							</div>
+							<button onclick="javascript:registerUser()" class="btn reg">REGISTER</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<form id="formAddFBPage">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> <input type="hidden" name="addFbPageBrand"
+			id="addFbPageBrand" value="addFbPageBrand" /> 
+			<input type="hidden"
+			name="addFbPageName" id="addFbPageName" value="addFbPageName" />
+	</form>
+
+	<form id="formRegisterUser">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> <input type="hidden" name="addUserBrand"
+			id="addUserBrand" value="addUserBrand" /> <input type="hidden"
+			name="addUserUsername" id="addUserUsername" value="addUserUsername" />
+		<input type="hidden" name="addUserPassword" id="addUserPassword"
+			value="addUserPassword" />
+	</form>
+
+
+	<!-- Javascript -->
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+
+	<!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+</body>
+</html>

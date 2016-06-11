@@ -10,4 +10,6 @@ public interface GPUsersService {
 	
 	public GPUsers validateCredentials(String username,String password);
 	
+	public GPUsers getBrandID(String username);
+	
 }

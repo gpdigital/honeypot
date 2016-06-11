@@ -1,6 +1,7 @@
 org/hibernate/dialect/SQLiteDialect$SQLiteUniqueDelegate.class
 com/gpdigital/honeypot/service/GPFbPagesService.class
 com/gpdigital/honeypot/UserDetailsServiceImpl/CustomAuthenticationProvider.class
+com/gpdigital/honeypot/controllers/BaseControllerAbstract.class
 com/gpdigital/honeypot/service/impl/GPFbPagesServiceImpl.class
 org/hibernate/dialect/SQLiteDialect$1.class
 com/gpdigital/honeypot/service/impl/GPUsersServiceImpl.class

@@ -31,4 +31,9 @@ public class GPUsersServiceImpl implements GPUsersService{
 		return gpUsersdao.validateCredentials(username, password);
 	}
 
+	@Override
+	public GPUsers getBrandID(String username) {
+		// TODO Auto-generated method stub
+		return gpUsersdao.getBrandID(username);
+	}
 }

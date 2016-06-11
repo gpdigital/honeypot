@@ -145,9 +145,9 @@ footer {
 	background: #000;
 }
 
-button.btn {
-	background: green;
-}
+/* button.btn { */
+/* 	background: green; */
+/* } */
 
 ::selection {
 	background: #3c763d;

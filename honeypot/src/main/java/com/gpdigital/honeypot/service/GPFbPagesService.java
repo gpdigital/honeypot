@@ -12,4 +12,5 @@ public interface GPFbPagesService {
 	public void deleteGPFbPage(String fbPageId) throws Exception;
 	
 	public List<GPFbPages> findFBPagesByBrandId(String brandId);
+	
 }

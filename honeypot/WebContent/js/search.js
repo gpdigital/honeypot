@@ -29,10 +29,21 @@ function summaryChange(index){
 //			+"		</div>"
 //			+"	</div>"
 //			+"</div>");
-	$('#buttonSummary').text(firstElement[index]+" vs "+secondElement[index]);
-	url = "getSummary/"+index;
+	//$('#buttonSummary').text(firstElement[index]+" vs "+secondElement[index]);
+	
+	//alert(url);
+	
+	
+	
+}
+
+function sum(){
+	url = "getSummary";
 	alert(url);
-	$("#summaryBody").load(url);
-	
-	
+	$("#listahantab").load(getSummary);
+}
+
+function sum2(){
+	url = "getSummary";
+	$("#listahantab").load(url);
 }

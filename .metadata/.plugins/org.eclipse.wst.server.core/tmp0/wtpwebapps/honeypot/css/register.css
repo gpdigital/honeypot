@@ -1,0 +1,26 @@
+h2{
+	color: white; font-size: 20px;
+}
+
+button.reg-add{
+	display:inline;
+	width: 30% !important;
+	float:right;
+	background-color: orange;
+}
+
+button.reg{
+	margin-top: 15px;
+	background-color: orange;
+	width: 100%;
+}
+
+.fbp-sq-in{
+	width:67%;
+	display:inline-block;
+}
+
+.inline-in{
+	
+}
+

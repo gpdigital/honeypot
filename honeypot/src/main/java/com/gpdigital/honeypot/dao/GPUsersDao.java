@@ -12,4 +12,7 @@ public interface GPUsersDao extends CrudRepository<GPUsers, String>{
 	@Query("FROM GPUsers a " + "WHERE a.username = :username AND a.password = :password")
 	public GPUsers validateCredentials(@Param("username") String username,@Param("password") String password);
 
+	@Query("FROM GPUsers a " + "WHERE a.username = :username")
+	public GPUsers getBrandID(@Param("username") String username);
+
 }

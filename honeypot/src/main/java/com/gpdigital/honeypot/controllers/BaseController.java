@@ -22,7 +22,7 @@ import com.gpdigital.honeypot.service.GPFbPagesService;
 import com.gpdigital.honeypot.service.GPUsersService;
 
 @Controller
-public class BaseController {
+public class BaseController extends BaseControllerAbstract{
 
 	@Autowired
 	GPUsersService gpUsersService;
@@ -46,6 +46,37 @@ public class BaseController {
 		// return "home";
 		return "home2";
 	}
+	
+	@RequestMapping({ "/qweqwe" })
+	@ResponseBody
+	public String showHomePagewwww(Model model, HttpServletRequest request) {
+		 return getUserName();
+//		model.addAttribute("firstElement", getUserName());
+//		return "home2::fragmentSummaryBody";
+	}
+	
+	@RequestMapping(value= "/getusername" , method = RequestMethod.POST)
+	@ResponseBody
+	public String getusername(Model model, HttpServletRequest request) {
+		// return "home";
+		GPUsers gpUser = new GPUsers();
+		gpUser = gpUsersService.getBrandID(getUserName());
+		List<GPFbPages> gpFbPages = gpFbPagesService.findFBPagesByBrandId(gpUser.getBrandId());
+		for(GPFbPages gpFbPage:gpFbPages){
+			System.out.println("gpFbPage:"+gpFbPage.getBrandId());
+		}
+//		return gpFbPages;
+		model.addAttribute("fbPages", gpFbPages);
+		return getUserName();
+	}
+	
+//	@RequestMapping(value = "/getusername", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String getusername(Model model, HttpServletRequest request) {
+//		// return "home";
+//		model.addAttribute("firstElement", getUserName());
+//		return getUserName();
+//	}
 
 	@RequestMapping(value = "/searchAssets", method = RequestMethod.POST)
 	@ResponseBody
@@ -69,17 +100,26 @@ public class BaseController {
 		return "test";
 	}
 
-	@RequestMapping(value = "/getSummary/{index}", method = RequestMethod.GET)
-	public String getSummary(Model model, @PathVariable("index") int index) {
+	@RequestMapping(value = "/getSummary", method = RequestMethod.GET)
+	public String getSummary(Model model) {
 
 		String[] firstElement = { "Male", "Motolite", "FHM", "FHM" };
 		String[] secondElement = { "Female", "Male", "Male", "Motolite" };
-		System.out.println("index:" + index);
-		model.addAttribute("firstElement", firstElement[index]);
-		model.addAttribute("secondElement", secondElement[index]);
-		model.addAttribute("firstPercentage", "" + (index + 1) * 25);
-		model.addAttribute("secondPercentage", "" + (4 - index) * 25);
-		return "home::fragmentSummaryBody";
+		model.addAttribute("list1", getUserName());
+		
+		GPUsers gpUser = new GPUsers();
+		gpUser = gpUsersService.getBrandID(getUserName());
+		List<GPFbPages> gpFbPages = gpFbPagesService.findFBPagesByBrandId(gpUser.getBrandId());
+		for(GPFbPages gpFbPage:gpFbPages){
+			System.out.println("gpFbPage:"+gpFbPage.getBrandId());
+		}
+		
+		model.addAttribute("listahan", gpFbPages);
+		return "list::listfrag2";
+//		return gpFbPages;
+//		model.addAttribute("fbPages", gpFbPages);
+//		
+//		return "home2::listfragment";
 	}
 
 	// @RequestMapping({ "/controller/registerPage" })

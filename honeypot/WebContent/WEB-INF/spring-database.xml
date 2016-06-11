@@ -20,8 +20,7 @@
 <!-- 			value="jdbc:sqlite:/home/ubuntu/db/honeypot.db" /> -->
 		<property name="url"
 			value="jdbc:sqlite:/Users/randyberos/Documents/digital/honeypot.db" />
-	<!-- <property name="url" -->
-		<!-- value="jdbc:sqlite:E:/apache-tomcat-7.0.64/ARTL_FILES/ARTL.db" /> -->
+
 	</bean>
 
 	<bean id="entityManagerFactory"
