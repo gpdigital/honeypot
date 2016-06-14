@@ -40,10 +40,11 @@ function home() {
 }
 
 function summary() {
-	var dum = '<div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div></div>';
+	var dum = '<div id="popup" ></div><div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div></div>';
 	$("#main_section").html(dum);
 	// alert($("#main_section").innerHTML);
-	summary1();
+	//summary1();
+	$("#popup").load('getPopup');
 }
 
 function content() {

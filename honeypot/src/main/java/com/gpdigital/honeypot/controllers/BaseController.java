@@ -116,10 +116,23 @@ public class BaseController extends BaseControllerAbstract{
 		
 		model.addAttribute("listahan", gpFbPages);
 		return "list::listfrag2";
-//		return gpFbPages;
-//		model.addAttribute("fbPages", gpFbPages);
-//		
-//		return "home2::listfragment";
+	}
+	
+	@RequestMapping(value = "/getPopup", method = RequestMethod.GET)
+	public String getPopup(Model model) {
+
+		String[] firstElement = { "Motolite", "Kia", "FHM", "Toyota" };
+		String[] secondElement = { "Female", "Male", "Male", "Motolite" };
+		
+		GPUsers gpUser = new GPUsers();
+		gpUser = gpUsersService.getBrandID(getUserName());
+		List<GPFbPages> gpFbPages = gpFbPagesService.findFBPagesByBrandId(gpUser.getBrandId());
+		for(GPFbPages gpFbPage:gpFbPages){
+			System.out.println("gpFbPage:"+gpFbPage.getBrandId());
+		}
+		
+		model.addAttribute("popuplist", firstElement);
+		return "popup::popupfragment";
 	}
 
 	// @RequestMapping({ "/controller/registerPage" })
