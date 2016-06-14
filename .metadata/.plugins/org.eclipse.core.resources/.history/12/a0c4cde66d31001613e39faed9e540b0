@@ -1,0 +1,58 @@
+<div id="popup" >					
+<div th:fragment="popupfragment" >					
+						<div class="btn-group" role="group">
+							<button id="manageUsersButton" type="button"
+								class="btn btn-default btn-sm" data-toggle="modal"
+								data-target="#manageUsers" onclick="javascript:loadUserList()">
+								<span class="glyphicon glyphicon-user"></span> Manage Users
+							</button>
+						</div>
+		
+	<div class="modal fade" id="manageUsers" role="dialog">
+		<div class="container modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">User List</h4>
+				</div>
+				<!-- 				<form ACTION="#" th:action="@{/saveProjects}" -->
+				<!-- 					th:object="${ptfProjectOwner}" method="POST"> -->
+				<!-- 					<input th:field="*{ptfProjectName}" /> -->
+				<div class="modal-body">
+
+					<div class="row">
+					  <div class="col-lg-6">
+					    <div class="input-group">
+					      <span th:each="fbPage2:${popuplist}"  class="input-group-addon">
+					        <input  th:text="${fbPage2}" type="checkbox" aria-label="..."/><br/>
+					      </span>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="dropdown" >
+						<button id="buttonSummary" class="btn btn-warning dropdown-toggle"
+									aria-expanded="false" style="width: 100%;" type="button"
+									data-toggle="dropdown"> Choose a Page <span class="caret"></span></button>
+						<ul  class="dropdown-menu" style="text-align: center; float: right; min-width: 100%;">
+							<li>
+								<a onclick="javascript:popupChange('')" >Gender</a>
+							</li>
+							<li>
+								<a onclick="javascript:popupChange('')" >Address</a>
+							</li>
+							<li>
+								<a onclick="javascript:popupChange('')" >Marital Status</a>
+							</li>
+						</ul>
+					</div>
+				
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>	
+</div>

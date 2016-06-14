@@ -1,0 +1,68 @@
+<div id="popup" >					
+<div th:fragment="popupfragment" >					
+						<div class="btn-group" role="group">
+							<button id="manageUsersButton" type="button"
+								class="btn btn-default btn-sm" data-toggle="modal"
+								data-target="#manageUsers" onclick="javascript:loadUserList()">
+								<span class="glyphicon glyphicon-user"></span> Manage Users
+							</button>
+							<button type="submit" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-log-out"></span> Log out
+							</button>
+						</div>
+		
+	<div class="modal fade" id="manageUsers" role="dialog">
+		<div class="container modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">User List</h4>
+				</div>
+				<!-- 				<form ACTION="#" th:action="@{/saveProjects}" -->
+				<!-- 					th:object="${ptfProjectOwner}" method="POST"> -->
+				<!-- 					<input th:field="*{ptfProjectName}" /> -->
+				<div class="modal-body">
+
+					<div class="row">
+					  <div class="col-lg-6">
+					    <div class="input-group">
+					      <span class="input-group-addon">
+					        <input type="checkbox" aria-label="...">Motolite</input>
+					        <input type="checkbox" aria-label="...">Toyota</input>
+					        <input type="checkbox" aria-label="...">Kia</input>
+					      </span>
+					    </div>
+					  </div>
+					</div>
+					
+				
+					<input id="ptfUserEidText" /> <select id="userRoleOption">
+						<option>Admin</option>
+						<option>User</option>
+					</select>
+					<button onclick="javascript:insertNewPTFEid()">add</button>
+					<form id="ptfUserListForm">
+						<!-- ADD ALL THE OTHER FIELDS THAT ARE PART OF THE OBJECT -->
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" /> <input id="newPTFUserEid"
+							type="hidden" name="newPTFUserEid" /> <input id="newUserRole"
+							type="hidden" name="newUserRole" />
+						<table id="ptfUserListTable" class="table">
+							<thead>
+								<tr>
+									<th><b>User EID</b></th>
+									<th><b>User Type</b></th>
+								</tr>
+							</thead>
+							<tbody id="ptfUserListTableBody"></tbody>
+						</table>
+						<!-- 						<button type="submit" data-dismiss="modal">Save</button> -->
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>	
+</div>
