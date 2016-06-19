@@ -1,0 +1,19 @@
+  <span class="dropdown">
+    <button id="col1Basic" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a onclick="javascript:col1Change('Address','7')">Address</a></li>
+      <li><a onclick="javascript:col1Change('Gender','9')">Gender</a></li>
+      <li><a onclick="javascript:col1Change('Status','10')">Status</a></li>
+    </ul>
+  </span>
+    <span class="dropdown">
+    <button id="col2Basic" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a onclick="javascript:col2Change('Address','7')">Address</a></li>
+      <li><a onclick="javascript:col2Change('Gender','9')">Gender</a></li>
+      <li><a onclick="javascript:col2Change('Status','10')">Status</a></li>
+    </ul>
+  </span><br/>
+   <button onclick="javascript:basicInfo()" type="button" class="btn btn-primary">Search</button>

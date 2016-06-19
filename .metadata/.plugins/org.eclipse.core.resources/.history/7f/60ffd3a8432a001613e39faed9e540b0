@@ -1,5 +1,0 @@
-package com.gpdigital.honeypot.controllers;
-
-public class BaseControllerAbstract {
-
-}

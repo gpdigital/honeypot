@@ -115,7 +115,7 @@ public class BaseController extends BaseControllerAbstract{
 		}
 		
 		model.addAttribute("listahan", gpFbPages);
-		return "list::listfrag2";
+		return "fragment/list::listfrag2";
 	}
 	
 	@RequestMapping(value = "/getPopup", method = RequestMethod.GET)
@@ -132,7 +132,19 @@ public class BaseController extends BaseControllerAbstract{
 		}
 		
 		model.addAttribute("popuplist", firstElement);
-		return "popup::popupfragment";
+		return "fragment/popup::popupfragment";
+	}
+	
+	@RequestMapping(value = "/getBasicMenu", method = RequestMethod.GET)
+	public String getBasicMenu() {
+
+		return "fragment/basic_info_menu";
+	}
+	
+	@RequestMapping(value = "/getInterestMenu", method = RequestMethod.GET)
+	public String getInterestMenu() {
+
+		return "fragment/interest_menu";
 	}
 
 	// @RequestMapping({ "/controller/registerPage" })

@@ -166,3 +166,9 @@ button.btn:active:focus, button.btn.active:focus {
 	background: #3c763d;
 	color: #fff;
 }
+
+#loadingbar {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+}

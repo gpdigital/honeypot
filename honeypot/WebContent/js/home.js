@@ -40,11 +40,14 @@ function home() {
 }
 
 function summary() {
-	var dum = '<div id="popup" ></div><div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div></div>';
+	var dum = '<div id="popup" ></div><div id="basic_info_display" ></div><div id="interest_menu" ></div><div id="interest_display" ></div>';
 	$("#main_section").html(dum);
 	// alert($("#main_section").innerHTML);
+
+//	$("#popup").load('getPopup');
+	$("#popup").load('getBasicMenu');
+	$("#interest_menu").load('getInterestMenu');
 	//summary1();
-	$("#popup").load('getPopup');
 }
 
 function content() {
@@ -61,32 +64,54 @@ function listChange(page){
 function changeMain(dum) {
 	$("#main_section").html(dum);
 }
+var id1=0;
+var id2=0;
+var id3=0;
+function col1Change(text, id){
+	$('#col1Basic').text(text);
+	id1 = id;
+}
+function col2Change(text, id){
+	$('#col2Basic').text(text);
+	id2 = id;
+}
+function col3Change(text, id){
+	$('#col3Basic').text(text);
+	id3 = id;
+}
+
+function basicInfo(){
+	if(id1>0& id2>0){
+		summary1();
+		$("#basic_info_display").html('<div id="loadingbar"></div>');
+		var bar = new ProgressBar.Circle(loadingbar, {
+			  strokeWidth: 6,
+			  easing: 'easeInOut',
+			  duration: 10000,
+			  color: '#FFEA82',
+			  trailColor: '#eee',
+			  trailWidth: 1,
+			  svgStyle: null
+			});
+
+			bar.animate(1.0);  // Number from 0.0 to 1.0
+	}
+}
 
 function summary1() {
 	data = "wew";
-	$
-			.ajax({
-				url : "http://gpdigital.crabdance.com/addr_gender.php",
+			console.log('basic_info ajax start');
+			$.ajax({
+				url : "http://gpdigital.crabdance.com/api.php?id1="+id1+"&%20id2="+id2,
 				type : 'GET',
 				success : function(mesg) {
+					console.log(mesg);
 
-					var dum = '<div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">100% Complete</span></div></div>';
-					$("#main_section").html(dum);
+					var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example" style="height: 250px;"></div></div></div></div></div></div>';
 
-					dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example" style="height: 250px;"></div></div></div></div></div></div>';
 
-					// <div class="panel panel-default"><div
-					// class="panel-heading">Panel heading without
-					// title</div><div class="panel-body"><div class="row"><div
-					// class="col-md-6"><div id="donut-example" style="height:
-					// 250px;"></div></div></div></div></div>
-					// setTimeout(changeMain(dum),5000);
-
-					$("#main_section").html(dum);
+					$("#basic_info_display").html(dum);
 					var resp = JSON.parse(mesg);
-					// alert(resp[0][0]);
-					// document.getElementById('container').innerHTML =
-					// JSON.stringify(mesg);
 					$
 							.getScript(
 									'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
@@ -95,114 +120,53 @@ function summary1() {
 												.getScript(
 														'http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',
 														function() {
-
+																console.log('data patch start');
+																var donut = [];
+																for(var x=0;x < resp.length; x++){
+																	var donut_row = {
+																			label : resp[x]['col1'],
+																			value : resp[x]['total']
+																	};
+																	donut[x] = donut_row;
+																}
+																console.log(donut);
+																
 															Morris
 																	.Donut({
 																		element : 'donut-example',
-																		data : [
-																				{
-																					label : resp[0][0],
-																					value : resp[0][2]
-																				},
-																				{
-																					label : resp[1][0],
-																					value : resp[1][2]
-																				},
-																				{
-																					label : resp[2][0],
-																					value : resp[2][2]
-																				},
-																				{
-																					label : resp[3][0],
-																					value : resp[3][2]
-																				},
-																				{
-																					label : resp[4][0],
-																					value : resp[4][2]
-																				},
-																				{
-																					label : resp[5][0],
-																					value : resp[5][2]
-																				},
-																				{
-																					label : resp[6][0],
-																					value : resp[6][2]
-																				},
-																				{
-																					label : resp[7][0],
-																					value : resp[7][2]
-																				},
-																				{
-																					label : resp[8][0],
-																					value : resp[8][2]
-																				},
-																				{
-																					label : resp[9][0],
-																					value : resp[9][2]
-																				} ]
+																		data : donut
 																	});
-
+																
+																console.log('data bar start');
+																var bar = [];
+																var bar_ykey = []
+																var bar_label = [];
+																for(var x=0;x < resp.length; x++){
+																	var bar_row = {
+																			y : resp[x]['col1']	
+																		};
+																	for(var y=0; y< resp[x]['col2'].length; y++){	
+																		console.log("value: " + resp[x]['col2'][y]['value']);
+																		console.log("tag: " + resp[x]['col2'][y]['tag']);
+																		bar_row['a'+y] = resp[x]['col2'][y]['value'];
+																		if(x==0){
+																			bar_label[y] = resp[x]['col2'][y]['tag'];
+																			bar_ykey[y] = 'a'+y;
+																		}
+																	}
+																	bar[x] = bar_row;
+																}
+																console.log("bar: " + bar);
+																console.log("bar label: " + bar_label);
+																console.log("bar ykey: " + bar_ykey);
 															Morris
 																	.Bar({
 																		element : 'bar-example',
-																		data : [
-																				{
-																					y : resp[0][0],
-																					a : parseInt(resp[0][3])/(parseInt(resp[0][3])+parseInt(resp[0][4])),
-																					b : parseInt(resp[0][4])/(parseInt(resp[0][3])+parseInt(resp[0][4]))
-																				},
-																				{
-																					y : resp[1][0],
-																					a : parseInt(resp[1][3])/(parseInt(resp[1][3])+parseInt(resp[1][4])),
-																					b : parseInt(resp[1][4])/(parseInt(resp[1][3])+parseInt(resp[1][4]))
-																				},
-																				{
-																					y : resp[2][0],
-																					a : parseInt(resp[2][3])/(parseInt(resp[2][3])+parseInt(resp[2][4])),
-																					b : parseInt(resp[2][4])/(parseInt(resp[2][3])+parseInt(resp[2][4]))
-																				},
-																				{
-																					y : resp[3][0],
-																					a : parseInt(resp[3][3])/(parseInt(resp[3][3])+parseInt(resp[3][4])),
-																					b : parseInt(resp[3][4])/(parseInt(resp[3][3])+parseInt(resp[3][4]))
-																				},
-																				{
-																					y : resp[4][0],
-																					a : parseInt(resp[4][3])/(parseInt(resp[4][3])+parseInt(resp[4][4])),
-																					b : parseInt(resp[4][4])/(parseInt(resp[4][3])+parseInt(resp[4][4]))
-																				},
-																				{
-																					y : resp[5][0],
-																					a : parseInt(resp[5][3])/(parseInt(resp[5][3])+parseInt(resp[5][4])),
-																					b : parseInt(resp[5][4])/(parseInt(resp[5][3])+parseInt(resp[5][4]))
-																				},
-																				{
-																					y : resp[6][0],
-																					a : parseInt(resp[6][3])/(parseInt(resp[6][3])+parseInt(resp[6][4])),
-																					b : parseInt(resp[6][4])/(parseInt(resp[6][3])+parseInt(resp[6][4]))
-																				},
-																				{
-																					y : resp[7][0],
-																					a : parseInt(resp[7][3])/(parseInt(resp[7][3])+parseInt(resp[7][4])),
-																					b : parseInt(resp[7][4])/(parseInt(resp[7][3])+parseInt(resp[7][4]))
-																				},
-																				{
-																					y : resp[8][0],
-																					a : parseInt(resp[8][3])/(parseInt(resp[8][3])+parseInt(resp[8][4])),
-																					b : parseInt(resp[8][4])/(parseInt(resp[8][3])+parseInt(resp[8][4]))
-																				},
-																				{
-																					y : resp[9][0],
-																					a : parseInt(resp[9][3])/(parseInt(resp[9][3])+parseInt(resp[9][4])),
-																					b : parseInt(resp[9][4])/(parseInt(resp[9][3])+parseInt(resp[9][4]))
-																				} ],
+																		data : bar,
 																		xkey : 'y',
-																		ykeys : [
-																				'a',
-																				'b' ],
-																		labels : [
-																				'Male',
-																				'Female' ]
+																		ykeys : bar_ykey,
+																		labels : bar_label,
+																		stacked: true
 																	});
 
 														});
@@ -210,6 +174,146 @@ function summary1() {
 				}
 			});
 }
+
+
+function interestInfo(){
+	var ctr = 0;
+	if(id3>0){
+		var page_id = [];
+		if(document.getElementById('check1').checked){
+			page_id.push('10');
+			ctr++;
+		}
+		if(document.getElementById('check2').checked){
+			page_id.push('13');
+			ctr++;
+		}
+		if(document.getElementById('check3').checked){
+			page_id.push('14');
+			ctr++;
+		}
+		if(document.getElementById('check4').checked){
+			page_id.push('15');
+			ctr++;
+		}
+		if(document.getElementById('check5').checked){
+			page_id.push('16');
+			ctr++;
+		}
+		if(document.getElementById('check6').checked){
+			page_id.push('17');
+			ctr++;
+		}
+		if(document.getElementById('check7').checked){
+			page_id.push('18');
+			ctr++;
+		}
+		if(document.getElementById('check8').checked){
+			page_id.push('19');
+			ctr++;
+		}
+		if(document.getElementById('check9').checked){
+			page_id.push('20');
+			ctr++;
+		}
+		if(page_id.length){
+			
+			$("#interest_display").html('<div id="loadingbar"></div>');
+			var bar = new ProgressBar.Circle(loadingbar, {
+				  strokeWidth: 6,
+				  easing: 'easeInOut',
+				  duration: 5000*ctr,
+				  color: '#FFEA82',
+				  trailColor: '#eee',
+				  trailWidth: 1,
+				  svgStyle: null
+				});
+
+				bar.animate(1.0);  // Number from 0.0 to 1.0
+			
+			var form_data = {
+				page_id : page_id,
+				info_id : id3
+			};
+			
+			$.ajax({
+				url : "http://gpdigital.crabdance.com/interest_api.php",
+				type : 'POST',
+				data : form_data,
+				success : function(mesg) {
+					console.log(mesg);
+
+					var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example2" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example2" style="height: 250px;"></div></div></div></div></div></div>';
+
+
+					$("#interest_display").html(dum);
+					var resp = JSON.parse(mesg);
+					$
+							.getScript(
+									'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
+									function() {
+										$
+												.getScript(
+														'http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',
+														function() {
+																console.log('data patch start');
+																var donut = [];
+																for(var x=0;x < resp.length; x++){
+																	var donut_row = {
+																			label : resp[x]['page_name'],
+																			value : resp[x]['page_total']
+																	};
+																	donut[x] = donut_row;
+																}
+																console.log(donut);
+																
+															Morris
+																	.Donut({
+																		element : 'donut-example2',
+																		data : donut
+																	});
+																
+																console.log('data bar start');
+																var bar = [];
+																var bar_ykey = []
+																var bar_label = [];
+																for(var x=0;x < resp.length; x++){
+																	var bar_row = {
+																			y : resp[x]['page_name']	
+																		};
+																	for(var y=0; y< resp[x]['col2'].length; y++){	
+																		console.log("value: " + resp[x]['col2'][y]['value']);
+																		console.log("tag: " + resp[x]['col2'][y]['tag']);
+																		bar_row['a'+y] = resp[x]['col2'][y]['value'];
+																		if(x==0){
+																			bar_label[y] = resp[x]['col2'][y]['tag'];
+																			bar_ykey[y] = 'a'+y;
+																		}
+																	}
+																	bar[x] = bar_row;
+																}
+																console.log("bar: " + bar);
+																console.log("bar label: " + bar_label);
+																console.log("bar ykey: " + bar_ykey);
+															Morris
+																	.Bar({
+																		element : 'bar-example2',
+																		data : bar,
+																		xkey : 'y',
+																		ykeys : bar_ykey,
+																		labels : bar_label,
+																		stacked: true
+																	});
+
+														});
+									});
+				}
+			});
+			
+		}
+	}
+}
+
 
 function sleep(milliseconds) {
 	var start = new Date().getTime();

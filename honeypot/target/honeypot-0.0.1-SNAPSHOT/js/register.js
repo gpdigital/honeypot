@@ -1,17 +1,6 @@
-function registerPage() {
-	// $.ajax({
-	// url : "registerPage",
-	// type : 'POST',
-	// data : $("#formRegister").serialize(),
-	// success : function(data) {
-	// alert(data);
-	// },
-	// error : function(data) {
-	// alert("error: " + data + " status: " + status + " er:" + er);
-	// }
-	// });
-	window.location = "registerPage";
-}
+//function registerPage() {
+//	window.location = "registerPage";
+//}
 function registerUser() {
 	if ($("#newBrand").val().trim() == "") {
 		$("#errorBrandName").html("Must Provide Brand Name");

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;list.html, popup.html&apos; to &apos;fragment&apos;" description="Move 2 resources to &apos;fragment&apos;" destination="WebContent/WEB-INF/views/fragment" element1="WebContent/WEB-INF/views/list.html" element2="WebContent/WEB-INF/views/popup.html" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1466060663868" updateReferences="true"/>
+</session>

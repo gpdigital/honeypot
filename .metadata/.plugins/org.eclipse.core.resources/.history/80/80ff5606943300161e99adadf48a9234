@@ -1,0 +1,18 @@
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Address</a></li>
+      <li><a href="#">Gender</a></li>
+      <li><a href="#">Status</a></li>
+    </ul>
+  </div>
+    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Address</a></li>
+      <li><a href="#">Gender</a></li>
+      <li><a href="#">Status</a></li>
+    </ul>
+  </div>

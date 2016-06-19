@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="col-md-6">
+ 		<div class="panel panel-default">
+ 			<div class="panel-heading">Interest Menu</div>
+ 			<div class="panel-body">
+				<span class="dropdown">
+	 				<input type="checkbox" id="check1" >kiainthephilippines</input><br/>
+	 				<input type="checkbox" id="check2" >ToyotaMotorPhilippines</input><br/>
+	 				<input type="checkbox" id="check3" >FHM.ph</input><br/>
+	 				<input type="checkbox" id="check4" >globeph</input><br/>
+	 				<input type="checkbox" id="check5" >SmartCommunications</input><br/>
+	 				<input type="checkbox" id="check6" >topgearphilippines</input><br/>
+	 				<input type="checkbox" id="check7" >InterAksyon</input><br/>
+	 				<input type="checkbox" id="check8" >abscbnNEWS</input><br/>
+	 				<input type="checkbox" id="check9" >gmanews</input>
+				</span>
+				<span class="dropdown">
+				    <button id="col2Basic" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+				    <span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+						<li><a onclick="javascript:col3Change('Address','7')">Address</a></li>
+						<li><a onclick="javascript:col3Change('Gender','9')">Gender</a></li>
+						<li><a onclick="javascript:col3Change('Status','10')">Status</a></li>
+				    </ul>
+				</span><br/>
+				<button onclick="javascript:basicInfo()" type="button" class="btn btn-primary">Search</button>
+ 			</div>
+ 		</div>
+ 	</div>
+</div>
