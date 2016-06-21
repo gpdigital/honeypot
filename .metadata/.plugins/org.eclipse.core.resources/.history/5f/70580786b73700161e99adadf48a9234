@@ -1,0 +1,69 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+       http://www.springframework.org/schema/data/jpa 
+       http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+
+	<!--JPA CONECTIONS -->
+	<jpa:repositories base-package="com.gpdigital.honeypot.dao" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.sqlite.JDBC" />
+		
+		<property name="url"
+		value="jdbc:sqlite:/home/ubuntu/db/honeypot.db" />
+		
+<!-- 		<property name="url" -->
+<!-- 		value="jdbc:sqlite:/Users/randyberos/Documents/digital/honeypot.db" /> -->
+
+
+
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.gpdigital.honeypot.entity" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="false" />
+				<property name="showSql" value="false" />
+				<property name="databasePlatform" value="org.hibernate.dialect.SQLiteDialect" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+	</bean>
+
+	<bean id="gpUsersService" class="com.gpdigital.honeypot.service.impl.GPUsersServiceImpl"></bean>
+	<bean id="gpFbPagesService"
+		class="com.gpdigital.honeypot.service.impl.GPFbPagesServiceImpl"></bean>
+	<bean id="gpBrandsService" class="com.gpdigital.honeypot.service.impl.GPBrandsServiceImpl"></bean>
+
+	<!-- <bean id="artlAssetMetaInfoService" -->
+	<!-- class="com.accenture.artl.service.impl.ARTLAssetMetaInfoServiceImpl"></bean> -->
+	<!-- <bean id="loadedFilesService" class="com.mkyong.web.serviceimpl.LoadedFilesServiceImpl"></bean> -->
+	<!-- <bean id="GroupBoxConnectionsService" -->
+	<!-- class="com.mkyong.web.serviceimpl.GroupBoxConnectionsServiceImpl"></bean> -->
+	<!-- <bean id="VisioDataService" class="com.mkyong.web.serviceimpl.VisioDataServiceImpl"></bean> -->
+	<!-- <bean id="QueuingTableService" class="com.mkyong.web.serviceimpl.QueuingTableServiceImpl"></bean> -->
+	<!-- <bean id="ModuleMappingService" class="com.mkyong.web.serviceimpl.ModuleMappingServiceImpl"></bean> -->
+	<!-- <bean id="FileGenerationStatusService" -->
+	<!-- class="com.mkyong.web.serviceimpl.FileGenerationStatusServiceImpl"></bean> -->
+	<!-- <bean id="UserSelectionService" class="com.mkyong.web.serviceimpl.UserSelectionServiceImpl"></bean> -->
+	<!-- <bean id="Users" class="com.mkyong.web.serviceimpl.UsersServiceImpl"></bean> -->
+
+</beans>

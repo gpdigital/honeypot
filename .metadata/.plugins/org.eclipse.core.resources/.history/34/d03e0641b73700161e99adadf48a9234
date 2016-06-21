@@ -102,7 +102,7 @@ function summary1() {
 	data = "wew";
 			console.log('basic_info ajax start');
 			$.ajax({
-				url : "http://gpdigital.twilightparadox.com/api.php?id1="+id1+"&%20id2="+id2,
+				url : "http://gpdigital.crabdance.com/api.php?id1="+id1+"&%20id2="+id2,
 				type : 'GET',
 				success : function(mesg) {
 					console.log(mesg);
@@ -237,7 +237,7 @@ function interestInfo(){
 			};
 			
 			$.ajax({
-				url : "http://gpdigital.twilightparadox.com/interest_api.php",
+				url : "http://gpdigital.crabdance.com/interest_api.php",
 				type : 'POST',
 				data : form_data,
 				success : function(mesg) {
