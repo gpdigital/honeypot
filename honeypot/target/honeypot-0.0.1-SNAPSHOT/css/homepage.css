@@ -35,6 +35,20 @@ header {
 	font-weight: 300;
 }
 
+.blue-bg {
+	color: #fff!important;
+/* 	background-color: #337ab7 !important; */
+/* 	border-color: #337ab7 !important; */
+	border-radius: 5px!important;
+	background-color: #337ab7 !important;
+	border-color: #337ab7 !important;
+}
+
+.row_basic_info {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 .search-button {
 	border-top-left-radius: 0px !important;
 	border-top-right-radius: 6px !important;

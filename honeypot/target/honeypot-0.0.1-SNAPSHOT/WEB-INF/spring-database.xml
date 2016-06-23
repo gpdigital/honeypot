@@ -23,6 +23,9 @@
 <!-- 		<property name="url" -->
 <!-- 		value="jdbc:sqlite:/Users/randyberos/Documents/digital/honeypot.db" /> -->
 
+<!-- <property name="url" -->
+<!-- 		value="jdbc:sqlite:C:/Users/Jasper Riane/Documents/DB/SQLiteDatabaseBrowserPortable/Data/honeypot.db" /> -->
+
 
 
 	</bean>
