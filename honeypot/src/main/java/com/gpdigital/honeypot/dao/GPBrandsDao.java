@@ -9,4 +9,7 @@ import com.gpdigital.honeypot.entity.GPBrands;
 public interface GPBrandsDao extends CrudRepository<GPBrands, String> {
 	@Query("FROM GPBrands a " + "WHERE a.brandName = :brandName")
 	public GPBrands findBrandNameByName(@Param("brandName") String brandName);
+	
+	@Query("FROM GPBrands a " + "WHERE a.brandId = :brandId")
+	public GPBrands findBrandNameById(@Param("brandId") String brandId);
 }

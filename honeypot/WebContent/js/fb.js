@@ -215,6 +215,7 @@
 											        xkey: bar_xkey,
 											        ykeys: bar_ykey,
 											        labels: bar_label,
+											        hideHover: "auto",
 												    hoverCallback: function(index, options, cont) {
 												    	var dum = content[index].message + '<br>';
 												    	dum = dum + '<img class="post_pic" src="'+content[index].picture+'">'

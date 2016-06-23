@@ -9,4 +9,6 @@ public interface GPBrandsService {
 	public void deleteGPBrand(String brandId) throws Exception;
 
 	public GPBrands findBrandNameByName(String brandName);
+	
+	public GPBrands findBrandNameById(String brandId);
 }

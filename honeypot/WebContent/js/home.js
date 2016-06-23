@@ -51,10 +51,17 @@ function summary() {
 }
 
 function content() {
-	var dum = '<div id="listahantab" ></div><div id="page_search" style="display:none" ></div><div id="page_info" style="display:none" ></div><div id="page_post" style="display:none" ></div><div id="post_info" style="display:none" ></div><div id="filter_list" style="display:none" ></div><div id="comments_list" style="display:none" ></div><div id="likes_list" style="display:none" ></div><div id="comment_filter" style="display:none" ></div><div id="comment_filter2" style="display:none" ></div><div id="comment_info" style="display:none" ></div><div id="comment_reply" style="display:none" ></div><div id="word_cloud" style="display:none" ><canvas id="test" width="512" height="192" style="border:1px dashed gray;"></canvas><canvas id="cloud" width="512" height="192" style="display: none;"></canvas></div>';
-	$("#main_section").html(dum);
-	$("#listahantab").load('getSummary');
-	$("#page_info").load('getPageInfo');
+	//var dum = '<div id="listahantab" ></div><div id="page_search" style="display:none" ></div><div id="page_info" style="display:none" ></div><div id="page_post" style="display:none" ></div><div id="post_info" style="display:none" ></div><div id="filter_list" style="display:none" ></div><div id="comments_list" style="display:none" ></div><div id="likes_list" style="display:none" ></div><div id="comment_filter" style="display:none" ></div><div id="comment_filter2" style="display:none" ></div><div id="comment_info" style="display:none" ></div><div id="comment_reply" style="display:none" ></div><div id="word_cloud" style="display:none" ><canvas id="test" width="512" height="192" style="border:1px dashed gray;"></canvas><canvas id="cloud" width="512" height="192" style="display: none;"></canvas></div><div style="height: 10px;"></div>';
+	//$("#main_section").html(dum);
+//	$("#main_section").load('getContentMainSection');
+//	$("#listahantab").load('getSummary');
+//	$("#page_info").load('getPageInfo');
+	
+	$("#main_section").load('getContentMainSection', function() {
+//		  alert( "Load was performed." );
+			$("#listahantab").load('getSummary');
+			$("#page_info").load('getPageInfo');
+		});
 }
 
 function listChange(page) {
@@ -84,6 +91,7 @@ function col3Change(text, id) {
 function basicInfo() {
 	if (id1 > 0 & id2 > 0) {
 		summary1();
+<<<<<<< Updated upstream
 		showOverlay();
 		// var bar = new ProgressBar.Circle(loadingbar, {
 		// strokeWidth: 6,
@@ -111,6 +119,9 @@ function showOverlay() {
 	document.getElementById('overlay').style.display = 'block';
 	$("#overlay").show();
 	setTimeout(function() {
+=======
+		$("#basic_info_display").html('<div class="row"><div class="col-md-4"></div><div class="col-md-8"><div id="loadingbar"></div></div></div>');
+>>>>>>> Stashed changes
 		var bar = new ProgressBar.Circle(loadingbar, {
 			strokeWidth : 6,
 			easing : 'easeInOut',
@@ -223,7 +234,12 @@ function summary1() {
 																		xkey : 'y',
 																		ykeys : bar_ykey,
 																		labels : bar_label,
+<<<<<<< Updated upstream
 																		stacked : true
+=======
+																	    hideHover: "auto",
+																		stacked: true
+>>>>>>> Stashed changes
 																	});
 
 														});
@@ -371,6 +387,7 @@ function interestInfo() {
 																		}
 																		bar[x] = bar_row;
 																	}
+<<<<<<< Updated upstream
 																	console
 																			.log("bar: "
 																					+ bar);
@@ -394,6 +411,23 @@ function interestInfo() {
 											});
 						}
 					});
+=======
+																	bar[x] = bar_row;
+																}
+																console.log("bar: " + bar);
+																console.log("bar label: " + bar_label);
+																console.log("bar ykey: " + bar_ykey);
+															Morris
+																	.Bar({
+																		element : 'bar-example2',
+																		data : bar,
+																		xkey : 'y',
+																		ykeys : bar_ykey,
+																		labels : bar_label,
+																	    hideHover: "auto",
+																		stacked: true
+																	});
+>>>>>>> Stashed changes
 
 		}
 	}

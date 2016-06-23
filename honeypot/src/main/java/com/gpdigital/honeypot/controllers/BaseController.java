@@ -42,8 +42,13 @@ public class BaseController extends BaseControllerAbstract{
 	}
 
 	@RequestMapping({ "/home" })
-	public String showHomePage(HttpServletRequest request) {
+	public String showHomePage(HttpServletRequest request, Model model) {
 		// return "home";
+		GPUsers gpUser = new GPUsers();
+		gpUser = gpUsersService.getBrandID(getUserName());
+		GPBrands gpBrand = gpBrandsService.findBrandNameById(gpUser.getBrandId());
+		model.addAttribute("brandName", gpBrand.getBrandName());
+		System.out.println(gpBrand.getBrandName());
 		return "home2";
 	}
 	
@@ -151,6 +156,12 @@ public class BaseController extends BaseControllerAbstract{
 	public String getPageInfo() {
 
 		return "fragment/page_info";
+	}
+	
+	@RequestMapping(value = "/getContentMainSection", method = RequestMethod.GET)
+	public String getContentMainSection() {
+
+		return "fragment/content_main_section";
 	}
 	
 	@RequestMapping(value = "/getPagePost", method = RequestMethod.GET)

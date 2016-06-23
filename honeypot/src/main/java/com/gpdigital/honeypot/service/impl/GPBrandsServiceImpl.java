@@ -30,5 +30,11 @@ public class GPBrandsServiceImpl implements GPBrandsService{
 		// TODO Auto-generated method stub
 		return gpBrandDao.findBrandNameByName(brandName);
 	}
+	
+	@Override
+	public GPBrands findBrandNameById(String brandId) {
+		// TODO Auto-generated method stub
+		return gpBrandDao.findBrandNameById(brandId);
+	}
 
 }

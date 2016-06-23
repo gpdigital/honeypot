@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<!-- <script src="js/jquery.1.9.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+<script src="js/search.js"></script>
+<script src="js/register.js"></script>
+<script src="js/progress.js"></script>
+
+<script src="js/home.js"></script>
+<script src="js/fb.js"></script>
+<title>ARTL Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> -->
+  
+<!--   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+<!--   <script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script> -->
+<!-- 	<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script> -->
+
+</head>
+<style type="text/css" >
+header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    padding:5px;
+    width:100%;
+}
+section {
+    width:100%;
+    float:left;
+    padding:10px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+    padding: 25px;
+}
+
+footer {
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    text-align:center;
+    overflow:hidden;
+}
+
+.morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
+.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
+</style>
+
+<body>
+
+<header class="jumbotron" >
+<h1 style="color:orange">HoneyPot</h1>
+<button onclick="login()" id="login" >Login</button><div id="login_status"></div><br/>
+					<form id="logout" method="post" name="logout"
+						th:action="@{/j_spring_security_logout}">
+						<button type="submit" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-log-out"></span> Log out
+						</button>
+					</form>
+</header>
+
+<nav class="navbar navbar-default" th:fragment="homefrag" >
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav nav-pills nav-justified">
+        <li id="1" class="active" ><a href="#home">Home</a></li>
+        <li id="2" ><a href="#summary">Discover</a></li>
+        <li id="3" ><a href="#content">Engage</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section id="main_section" >
+	
+						
+</section>
+
+<footer>
+Copyright © Gameplandigital
+</footer>
+
+
+</body>
+</html>
+
