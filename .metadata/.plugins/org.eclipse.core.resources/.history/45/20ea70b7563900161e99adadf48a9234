@@ -135,8 +135,7 @@ function summary1() {
 															Morris
 																	.Donut({
 																		element : 'donut-example',
-																		data : donut,
-																		formatter: function (y, data) { return y + '%' }
+																		data : donut
 																	});
 																
 																console.log('data bar start');
@@ -272,8 +271,7 @@ function interestInfo(){
 															Morris
 																	.Donut({
 																		element : 'donut-example2',
-																		data : donut,
-																		formatter: function (y, data) { return y + '%' }
+																		data : donut
 																	});
 																
 																console.log('data bar start');

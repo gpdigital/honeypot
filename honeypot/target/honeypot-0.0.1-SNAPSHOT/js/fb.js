@@ -45,7 +45,8 @@
           }
       }, {scope: 'email'});
     }
-    
+
+    var page_name;
     // getting basic user info
     function getPageInfo(page) {
       document.getElementById('comments_list').style.display = 'none';
@@ -73,6 +74,7 @@
     	document.getElementById('page_about').innerHTML = 'About: ' + response.about;
     	document.getElementById('page_likes').innerHTML = 'Likes: ' + response.fan_count;
     	
+    	page_name = response.name;
         console.log(response);
       });
     
@@ -81,7 +83,7 @@
 
     function getPagePost(page){
     	$("#page_post").load('getPagePost');
-      FB.api('/'+page, 'GET', {fields: 'posts.limit(10){created_time,id,message,picture,type,link,comments.limit(0).summary(true),likes.limit(0).summary(true),shares}'}, 
+      FB.api('/'+page, 'GET', {fields: 'posts.limit(50){created_time,id,message,picture,type,link,comments.limit(0).summary(true),likes.limit(0).summary(true),shares}'}, 
     		  function(response) {
 
         document.getElementById('page_post').style.display = 'block';
@@ -94,15 +96,18 @@
 		console.log(response);
 		for(var i = 0; i < (response.posts.data).length; i++){
 			var bar_row = {};
-			var d = new Date(response.posts.data[i].created_time);
-			bar_row['y'] = d.toDateString() + ' ' + d.toLocaleTimeString();
-			bar_row['a'] = response.posts.data[i].likes.summary.total_count;
-			bar_row['b'] = response.posts.data[i].comments.summary.total_count;
-			if("shares" in response.posts.data[i])
-				bar_row['c'] = response.posts.data[i].shares.count;
-			else
-				bar_row['c'] = 0; 
-			bar[i] = bar_row;
+			if(i<20){
+				var d = new Date(response.posts.data[i].created_time);
+				bar_row['y'] = d.toDateString() + ' ' + d.toLocaleTimeString();
+				bar_row['a'] = response.posts.data[i].likes.summary.total_count;
+				bar_row['b'] = response.posts.data[i].comments.summary.total_count;
+				if("shares" in response.posts.data[i])
+					bar_row['c'] = response.posts.data[i].shares.count;
+				else
+					bar_row['c'] = 0; 
+				bar[i] = bar_row;
+			}
+			
 
 			var content_row = {};
 			content_row['id'] = response.posts.data[i].id;
@@ -217,6 +222,7 @@
 												    	return(dum);
 												    }
 												}).on('click', function(i, row){
+													document.getElementById('post_side').style.display = 'block';
 								                	console.log(i, row);
 								                	console.log(row.y);
 								                	showPost(i, content);
@@ -224,6 +230,9 @@
 
 									});
 				});
+		
+		document.getElementById('word_cloud').style.display = 'block';
+		contentProcess(content);
     }
     
     function showPost(i, content){
@@ -431,4 +440,139 @@
         document.getElementById('comment_reply').innerHTML = dummy;
       });
       
+    }
+    
+    // word cloud start
+    var OFFSET = 8;
+
+    function getFont(style, size, name) {
+        return (style + ' ' + size + 'px ' + name);
+    }
+
+    function measureText(text, font, size, context) {
+        context.font = font;
+        var metrics = context.measureText(text);
+        return {
+            width: metrics.width + 2 * OFFSET, //2
+            height: Math.round(size * 1.5) //1.5
+        };
+    }
+
+    function putText(text, font, x, y, context) {
+        context.font = font;
+        context.textBaseline = 'top';
+        context.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        context.fillText(text, x, y);
+    }
+
+    function testCollision(pixels) {
+        var i;
+
+        for (i = 0; i < pixels.length; i += 4) {
+            if (pixels[i + 3] > 128) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function getCloud(data, style, name, testid, cloudid) {
+        var canvasTest = document.getElementById(testid);
+        var contextTest = canvasTest.getContext("2d");
+        var canvasCloud = document.getElementById(cloudid);
+        var contextCloud = canvasCloud.getContext("2d");
+
+        var w = 512;
+        var h = 192;
+
+        var i;
+
+        for (i = 0; i < data.length; i++) {
+            var m = data[i];
+            var text = m[0];
+            var size = m[1];
+            var col = true;
+            var max = 10;
+            var font = getFont(style, size, name);
+            var measure = measureText(text, font, size, contextTest);
+
+            while (col && (max-- > 0)) {
+
+                var x = Math.round(Math.random() * (w - measure.width - OFFSET)) + 2 * OFFSET;
+                var y = Math.round(Math.random() * (h - measure.height));
+
+                var bx = x - OFFSET;
+                bx = (bx < 0) ? 0 : bx;
+                var by = y;
+                var bw = measure.width;
+                var bh = measure.height;
+
+                contextCloud.drawImage(contextTest.canvas, bx, by, bw, bh, bx, by, bw, bh);
+                putText(text, font, x, y, contextTest);
+
+                var img = contextTest.getImageData(bx, by, bw, bh);
+                col = testCollision(img.data);
+
+                if (col) {
+                    contextTest.clearRect(bx, by, bw, bh);
+                    contextTest.drawImage(contextCloud.canvas, bx, by, bw, bh, bx, by, bw, bh);
+                    size = Math.max(Math.round(size * 0.85), 10);
+                    font = getFont(style, size, name);
+                    measure = measureText(text, font, size, contextTest);
+                }
+
+                contextCloud.clearRect(bx, by, bw, bh);
+            }
+        }
+    }
+
+    function contentProcess(content){
+    	var mystring = '';
+    	for(var i=0; i<content.length; i++){
+    		mystring += content[i].message + ' ';
+    		mystring += page_name + ' ';
+    		mystring += content[i].created_time + ' ';
+    	}
+    	console.log(mystring);
+    	var words = mystring.split(' ');
+    	console.log(words);
+
+    	a = words;
+    	result = { };
+    	for(var i = 0; i < a.length; ++i) {
+    	    if(!result[a[i]])
+    	        result[a[i]] = 0;
+    	    ++result[a[i]];
+    	}
+    	console.log(result);
+
+    	result2 = {};
+    	words2 = []
+    	for(var i=0; i<a.length; i++){
+    		if(!result2[a[i]]){
+    			//if(a[i]!='the'||a[i]!='to'||a[i]!='for'||a[i]!='of'||a[i]!='a'||a[i]!='and')
+    				words2.push([a[i],result[a[i]]]);
+    		}
+    		result2[a[i]] = 1;
+    	}
+
+    	console.log(words2);
+
+
+
+    	var a = [['AAA', 12], ['BBB', 58], ['ccc', 14],['18', 21]];
+
+    	var sorted = words2.sort(sortFunction);
+    	console.log(sorted);
+    	getCloud(sorted, 'bold italic', 'Amaranth', 'test', 'cloud');
+    }
+
+    function sortFunction(a, b) {
+        if (a[1] === b[1]) {
+            return 0;
+        }
+        else {
+            return (a[1] > b[1]) ? -1 : 1;
+        }
     }

@@ -96,18 +96,15 @@
 		console.log(response);
 		for(var i = 0; i < (response.posts.data).length; i++){
 			var bar_row = {};
-			if(i<20){
-				var d = new Date(response.posts.data[i].created_time);
-				bar_row['y'] = d.toDateString() + ' ' + d.toLocaleTimeString();
-				bar_row['a'] = response.posts.data[i].likes.summary.total_count;
-				bar_row['b'] = response.posts.data[i].comments.summary.total_count;
-				if("shares" in response.posts.data[i])
-					bar_row['c'] = response.posts.data[i].shares.count;
-				else
-					bar_row['c'] = 0; 
-				bar[i] = bar_row;
-			}
-			
+			var d = new Date(response.posts.data[i].created_time);
+			bar_row['y'] = d.toDateString() + ' ' + d.toLocaleTimeString();
+			bar_row['a'] = response.posts.data[i].likes.summary.total_count;
+			bar_row['b'] = response.posts.data[i].comments.summary.total_count;
+			if("shares" in response.posts.data[i])
+				bar_row['c'] = response.posts.data[i].shares.count;
+			else
+				bar_row['c'] = 0; 
+			bar[i] = bar_row;
 
 			var content_row = {};
 			content_row['id'] = response.posts.data[i].id;
@@ -197,6 +194,7 @@
     
     function graph(bar, bar_xkey, bar_ykey, bar_label, content){
 		console.log(content);
+		contentProcess(content);
 		$.getScript(
 				'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
 				function() {
@@ -222,7 +220,6 @@
 												    	return(dum);
 												    }
 												}).on('click', function(i, row){
-													document.getElementById('post_side').style.display = 'block';
 								                	console.log(i, row);
 								                	console.log(row.y);
 								                	showPost(i, content);
@@ -230,9 +227,6 @@
 
 									});
 				});
-		
-		document.getElementById('word_cloud').style.display = 'block';
-		contentProcess(content);
     }
     
     function showPost(i, content){
@@ -551,8 +545,7 @@
     	words2 = []
     	for(var i=0; i<a.length; i++){
     		if(!result2[a[i]]){
-    			//if(a[i]!='the'||a[i]!='to'||a[i]!='for'||a[i]!='of'||a[i]!='a'||a[i]!='and')
-    				words2.push([a[i],result[a[i]]]);
+    			words2.push([a[i],result[a[i]]]);
     		}
     		result2[a[i]] = 1;
     	}

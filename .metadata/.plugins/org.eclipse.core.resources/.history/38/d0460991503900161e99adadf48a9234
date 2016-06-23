@@ -197,6 +197,7 @@
     
     function graph(bar, bar_xkey, bar_ykey, bar_label, content){
 		console.log(content);
+		contentProcess(content);
 		$.getScript(
 				'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
 				function() {
@@ -222,7 +223,6 @@
 												    	return(dum);
 												    }
 												}).on('click', function(i, row){
-													document.getElementById('post_side').style.display = 'block';
 								                	console.log(i, row);
 								                	console.log(row.y);
 								                	showPost(i, content);
@@ -230,9 +230,6 @@
 
 									});
 				});
-		
-		document.getElementById('word_cloud').style.display = 'block';
-		contentProcess(content);
     }
     
     function showPost(i, content){
@@ -551,8 +548,7 @@
     	words2 = []
     	for(var i=0; i<a.length; i++){
     		if(!result2[a[i]]){
-    			//if(a[i]!='the'||a[i]!='to'||a[i]!='for'||a[i]!='of'||a[i]!='a'||a[i]!='and')
-    				words2.push([a[i],result[a[i]]]);
+    			words2.push([a[i],result[a[i]]]);
     		}
     		result2[a[i]] = 1;
     	}
