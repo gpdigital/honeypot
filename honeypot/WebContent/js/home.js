@@ -35,7 +35,7 @@ function getusername() {
 }
 
 function home() {
-	var dum = '<div id="welcome" class="container"><div class="title"><h2>Welcome to Honeypot</h2></div><p>This is <strong>Undeviating</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so youre pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p></div>';
+	var dum = '<div id="welcome" class="container"><div class="title"><h2>Welcome to Honeypot</h2></div><p>This is <strong>Undeviating</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so youre pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun slightsmile emoticon </p></div>';
 	$("#main_section").html(dum);
 }
 
@@ -51,17 +51,12 @@ function summary() {
 }
 
 function content() {
-	//var dum = '<div id="listahantab" ></div><div id="page_search" style="display:none" ></div><div id="page_info" style="display:none" ></div><div id="page_post" style="display:none" ></div><div id="post_info" style="display:none" ></div><div id="filter_list" style="display:none" ></div><div id="comments_list" style="display:none" ></div><div id="likes_list" style="display:none" ></div><div id="comment_filter" style="display:none" ></div><div id="comment_filter2" style="display:none" ></div><div id="comment_info" style="display:none" ></div><div id="comment_reply" style="display:none" ></div><div id="word_cloud" style="display:none" ><canvas id="test" width="512" height="192" style="border:1px dashed gray;"></canvas><canvas id="cloud" width="512" height="192" style="display: none;"></canvas></div><div style="height: 10px;"></div>';
+	//var dum = '<div id="listahantab" ></div><div id="page_search" style="display:none" ></div><div id="page_info" style="display:none" ></div><div id="page_post" style="display:none" ></div><div id="post_info" style="display:none" ></div><div id="filter_list" style="display:none" ></div><div id="comments_list" style="display:none" ></div><div id="likes_list" style="display:none" ></div><div id="comment_filter" style="display:none" ></div><div id="comment_filter2" style="display:none" ></div><div id="comment_info" style="display:none" ></div><div id="comment_reply" style="display:none" ></div><div id="word_cloud" style="display:none" ><canvas id="test" width="512" height="192" style="border:1px dashed gray;"></canvas><canvas id="cloud" width="512" height="192" style="display: none;"></canvas></div>';
 	//$("#main_section").html(dum);
-//	$("#main_section").load('getContentMainSection');
-//	$("#listahantab").load('getSummary');
-//	$("#page_info").load('getPageInfo');
-	
-	$("#main_section").load('getContentMainSection', function() {
-//		  alert( "Load was performed." );
-			$("#listahantab").load('getSummary');
-			$("#page_info").load('getPageInfo');
-		});
+	$("#main_section").load('getContentMainSection', function (){
+		$("#listahantab").load('getSummary');
+		$("#page_info").load('getPageInfo');
+	});
 }
 
 function listChange(page) {
@@ -87,11 +82,25 @@ function col3Change(text, id) {
 	$('#col3Basic').text(text);
 	id3 = id;
 }
-
+var basic_h1 = '';
+var basic_h2 = '';
 function basicInfo() {
 	if (id1 > 0 & id2 > 0) {
+		if(id1 == 7)
+			basic_h1 = 'Current Address';
+		if(id1 == 9)
+			basic_h1 = 'Gender';
+		if(id1 == 10)
+			basic_h1 = 'Status';
+		
+		if(id2 == 7)
+			basic_h2 = basic_h1 + ' vs Current Address';
+		if(id2 == 9)
+			basic_h2 = basic_h1 + ' vs Gender';
+		if(id2 == 10)
+			basic_h2 = basic_h1 + ' vs Status';
+		
 		summary1();
-<<<<<<< Updated upstream
 		showOverlay();
 		// var bar = new ProgressBar.Circle(loadingbar, {
 		// strokeWidth: 6,
@@ -116,12 +125,9 @@ function showOverlay() {
 					+ '<div id="loadingbar"></div>'
 					+ '</div><div class="col-md-5 col-lg-5 col-sm-5"></div>');
 	$("#basic_info_display").html("");
-	document.getElementById('overlay').style.display = 'block';
+//	document.getElementById('overlay').style.display = 'block';
 	$("#overlay").show();
 	setTimeout(function() {
-=======
-		$("#basic_info_display").html('<div class="row"><div class="col-md-4"></div><div class="col-md-8"><div id="loadingbar"></div></div></div>');
->>>>>>> Stashed changes
 		var bar = new ProgressBar.Circle(loadingbar, {
 			strokeWidth : 6,
 			easing : 'easeInOut',
@@ -139,7 +145,7 @@ function showOverlay() {
 function hideOverlay() {
 	$('body').removeClass('stop-scrolling')
 	$("#overlay").hide();
-	document.getElementById('overlay').style.display = 'none';
+	//document.getElementById('overlay').style.display = 'none';
 	// setTimeout(function(){
 	// $.mobile.loading('hide');
 	// },1);
@@ -156,10 +162,12 @@ function summary1() {
 				success : function(mesg) {
 					console.log(mesg);
 
-					var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example" style="height: 250px;"></div></div></div></div></div></div>';
+					var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading" id = "basic_g1">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading" id="basic_g2" >Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example" style="height: 250px;"></div></div></div></div></div></div>';
 					hideOverlay();
 
 					$("#basic_info_display").html(dum);
+					$("#basic_g1").html(basic_h1);
+					$("#basic_g2").html(basic_h2);
 					var resp = JSON.parse(mesg);
 					$
 							.getScript(
@@ -234,12 +242,8 @@ function summary1() {
 																		xkey : 'y',
 																		ykeys : bar_ykey,
 																		labels : bar_label,
-<<<<<<< Updated upstream
-																		stacked : true
-=======
-																	    hideHover: "auto",
-																		stacked: true
->>>>>>> Stashed changes
+																		stacked : true,
+																		hideHover: "auto"
 																	});
 
 														});
@@ -248,9 +252,18 @@ function summary1() {
 			});
 }
 
+var interest_h1 = 'Pages';
+var interest_h2 = '';
 function interestInfo() {
 	var ctr = 0;
 	if (id3 > 0) {
+		if(id3 == 7)
+			interest_h2 = interest_h1 + ' vs Current Address';
+		if(id3 == 9)
+			interest_h2 = interest_h1 + ' vs Gender';
+		if(id3 == 10)
+			interest_h2 = interest_h1 + ' vs Status';
+		
 		var page_id = [];
 		if (document.getElementById('check1').checked) {
 			page_id.push('10');
@@ -324,9 +337,11 @@ function interestInfo() {
 						success : function(mesg) {
 							console.log(mesg);
 							hideOverlay();
-							var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example2" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading">Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example2" style="height: 250px;"></div></div></div></div></div></div>';
+							var dum = '<div class="container-fluid"><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading" id="interest_g1" >Top 10 Current Address</div><div class="panel-body"><div class="row"><div id="donut-example2" style="height: 250px;"></div></div></div></div></div><div class="col-md-6"><div class="panel panel-default"><div class="panel-heading" id="interest_g2" >Address to Gender Relation</div><div class="panel-body"><div class="row"><div id="bar-example2" style="height: 250px;"></div></div></div></div></div></div>';
 
 							$("#interest_display").html(dum);
+							$("#interest_g1").html(interest_h1);
+							$("#interest_g2").html(interest_h2);
 							var resp = JSON.parse(mesg);
 							$
 									.getScript(
@@ -387,7 +402,6 @@ function interestInfo() {
 																		}
 																		bar[x] = bar_row;
 																	}
-<<<<<<< Updated upstream
 																	console
 																			.log("bar: "
 																					+ bar);
@@ -404,6 +418,7 @@ function interestInfo() {
 																				xkey : 'y',
 																				ykeys : bar_ykey,
 																				labels : bar_label,
+																				hideHover: "auto",
 																				stacked : true
 																			});
 
@@ -411,23 +426,6 @@ function interestInfo() {
 											});
 						}
 					});
-=======
-																	bar[x] = bar_row;
-																}
-																console.log("bar: " + bar);
-																console.log("bar label: " + bar_label);
-																console.log("bar ykey: " + bar_ykey);
-															Morris
-																	.Bar({
-																		element : 'bar-example2',
-																		data : bar,
-																		xkey : 'y',
-																		ykeys : bar_ykey,
-																		labels : bar_label,
-																	    hideHover: "auto",
-																		stacked: true
-																	});
->>>>>>> Stashed changes
 
 		}
 	}

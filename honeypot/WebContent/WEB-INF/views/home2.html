@@ -101,7 +101,6 @@ footer {
 
 <body>
 
-<<<<<<< Updated upstream
 	<header class="jumbotron">
 		<h1 style="color: orange">HoneyPot</h1>
 		<button onclick="login()" id="login">Login</button>
@@ -115,7 +114,7 @@ footer {
 		</form>
 	</header>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" th:fragment="homefrag">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -126,7 +125,7 @@ footer {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#" th:text="${brandName}">Brand</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -135,7 +134,7 @@ footer {
 				<ul class="nav nav-pills nav-justified">
 					<li id="1" class="active"><a href="#home">Home</a></li>
 					<li id="2"><a href="#summary">Discover</a></li>
-					<li id="3"><a href="#content">React</a></li>
+					<li id="3"><a href="#content">Engage</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -143,48 +142,14 @@ footer {
 		<!-- /.container-fluid -->
 	</nav>
 
-	<section id="main_section"></section>
-	<div id="overlay">
-	</div>
-=======
-<header class="jumbotron" >
-<h1 style="color:orange">HoneyPot</h1>
-<button onclick="login()" id="login" >Login</button><div id="login_status"></div><br/>
-					<form id="logout" method="post" name="logout"
-						th:action="@{/j_spring_security_logout}">
-						<button type="submit" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-log-out"></span> Log out
-						</button>
-					</form>
-</header>
+	<section id="main_section">
+		
 
-<nav class="navbar navbar-default" th:fragment="homefrag" >
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" th:text="${brandName}">Brand</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav nav-pills nav-justified">
-        <li id="1" class="active" ><a href="#home">Home</a></li>
-        <li id="2" ><a href="#summary">Discover</a></li>
-        <li id="3" ><a href="#content">Engage</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-<section id="main_section" >
->>>>>>> Stashed changes
+	</section>
 	
+	<div id="overlay">
+		</div>
 
 	<footer> Copyright © Gameplandigital </footer>
 

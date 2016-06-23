@@ -15,6 +15,23 @@ header {
 	background-size: cover;
 }
 
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    background: black;
+    top: 0px;
+    left: -1px;
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    
+}
+
 .acn-logo {
 	padding-top: 15px;
 	padding-bottom: 10px;
@@ -183,8 +200,8 @@ button.btn:active:focus, button.btn.active:focus {
 
 #loadingbar {
   margin: 20px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
 .page_pic {

@@ -17,14 +17,14 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.sqlite.JDBC" />
 		
-<!-- 		<property name="url" -->
-<!-- 		value="jdbc:sqlite:/home/ubuntu/db/honeypot.db" /> -->
+		<property name="url"
+		value="jdbc:sqlite:/home/ubuntu/db/honeypot.db" />
 		
 <!-- 		<property name="url" -->
 <!-- 		value="jdbc:sqlite:/Users/randyberos/Documents/digital/honeypot.db" /> -->
 
-<property name="url"
-		value="jdbc:sqlite:C:/Users/Jasper Riane/Documents/DB/SQLiteDatabaseBrowserPortable/Data/honeypot.db" />
+<!-- <property name="url" -->
+<!-- 		value="jdbc:sqlite:C:/Users/Jasper Riane/Documents/DB/SQLiteDatabaseBrowserPortable/Data/honeypot.db" /> -->
 
 
 
