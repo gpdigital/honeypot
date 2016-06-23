@@ -1,29 +1,44 @@
 <div class="container-fluid">
-	<div class="col-md-6">
- 		<div class="panel panel-default">
- 			<div class="panel-heading">Basic Info Menu</div>
- 			<div class="panel-body">
-				<span class="dropdown">
-	 				  <button id="col1Basic" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-	 				  <span class="caret"></span></button>
-	 				  <ul class="dropdown-menu">
-	 				  	<li><a onclick="javascript:col1Change('Address','7')">Address</a></li>
-	 				  	<li><a onclick="javascript:col1Change('Gender','9')">Gender</a></li>
-	 				  	<li><a onclick="javascript:col1Change('Status','10')">Status</a></li>
-	 				  </ul>
-				</span>
-				<span class="dropdown">
-				    <button id="col2Basic" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-				    <span class="caret"></span></button>
-				    <ul class="dropdown-menu">
-						<li><a onclick="javascript:col2Change('Address','7')">Address</a></li>
-						<li><a onclick="javascript:col2Change('Gender','9')">Gender</a></li>
-						<li><a onclick="javascript:col2Change('Status','10')">Status</a></li>
-				    </ul>
-				</span><br/>
-				<button onclick="javascript:basicInfo()" type="button" class="btn btn-primary">Search</button>
- 			</div>
- 		</div>
- 	</div>
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Basic Info Menu</div>
+			<div class="panel-body">
+				<div class="row row_basic_info" style="text-align: center;">
+					<span class="dropdown">
+						<button id="col1Basic"
+							class="btn"  style="width:100%"
+							type="button" data-toggle="dropdown">
+							Select X-axis Basic Info <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu col-lg-12" style="text-align: center;">
+							<li><a onclick="javascript:col1Change('Address','7')">Address</a></li>
+							<li><a onclick="javascript:col1Change('Gender','9')">Gender</a></li>
+							<li><a onclick="javascript:col1Change('Status','10')">Status</a></li>
+						</ul>
+					</span>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="row row_basic_info" style="text-align: center;">
+					<span class="dropdown" style="text-align: center;">
+						<button id="col2Basic" style="width:100%"
+							class="btn" type="button" data-toggle="dropdown"> Select Y-axis
+							Basic Info <span class="caret"></span>
+						</button>
+						<!-- 							class="btn btn-primary dropdown-toggle dropdown-black" -->
+						<ul class="dropdown-menu col-lg-12" style="text-align: center;">
+							<li><a onclick="javascript:col2Change('Address','7')">Address</a></li>
+							<li><a onclick="javascript:col2Change('Gender','9')">Gender</a></li>
+							<li><a onclick="javascript:col2Change('Status','10')">Status</a></li>
+						</ul>
+					</span>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="col-lg-12" style="text-align: center;">
+					<button onclick="javascript:basicInfo()" type="button"
+						class="btn blue-bg">Generate Analytics</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
- 
+
