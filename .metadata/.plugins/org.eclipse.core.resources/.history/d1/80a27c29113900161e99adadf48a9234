@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<img class="post_pic" id="page_picture" />
+		</div>
+		<div class="col-md-8">
+			<a id="page_link" ></a><br>
+			<span id="page_about">About: :fan_count:</span><br>
+			<span id="page_likes">Likes: :fan_count:</span>
+		</div>
+	</div>
+</div>

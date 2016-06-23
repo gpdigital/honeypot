@@ -1504,3 +1504,102 @@ Caused by: org.eclipse.core.runtime.CoreException: One or more constraints have 
 2016-06-21 21:59:20,564 [Worker-398] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
 2016-06-21 21:59:20,565 [Worker-398] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-06-21 21:59:20,566 [Worker-398] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-22 19:46:25,859 [Worker-463] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-22 19:46:25,867 [Worker-463] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-22 19:46:25,870 [Worker-463] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-22 19:46:25,871 [Worker-463] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-22 19:46:25,872 [Worker-463] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of honeypot
+2016-06-22 19:46:25,872 [Worker-463] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for honeypot
+2016-06-22 19:46:25,890 [Worker-463] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-22 21:45:04,836 [Worker-461] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-22 21:45:04,839 [Worker-461] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-22 21:45:04,842 [Worker-461] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-22 21:45:04,844 [Worker-461] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:44:49,357 [Worker-517] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:44:49,365 [Worker-517] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:44:49,367 [Worker-517] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:44:49,368 [Worker-517] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:45:48,685 [Worker-490] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:45:48,686 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:45:48,687 [Worker-490] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:45:48,687 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:45:54,446 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:45:54,447 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:45:54,448 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:45:54,449 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:48:48,727 [Worker-490] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:48:48,729 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:48:48,730 [Worker-490] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:48:48,730 [Worker-490] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:54:26,384 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:54:26,386 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:54:26,387 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:54:26,388 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 14:54:49,938 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:54:49,939 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 14:54:49,940 [Worker-516] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 14:54:49,940 [Worker-516] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 15:07:35,639 [Worker-515] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:07:35,644 [Worker-515] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 15:07:35,645 [Worker-515] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:07:35,645 [Worker-515] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 15:18:04,318 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:18:04,320 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 15:18:04,326 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:18:04,326 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 15:28:00,820 [Worker-519] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:28:00,824 [Worker-519] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 15:28:00,826 [Worker-519] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 15:28:00,826 [Worker-519] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:39:56,555 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:39:56,561 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:39:56,562 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:39:56,563 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:41:05,471 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:41:05,472 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:41:05,474 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:41:05,474 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:42:30,927 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:42:30,930 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:42:30,931 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:42:30,932 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:43:17,564 [Worker-528] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:17,567 [Worker-528] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:43:17,568 [Worker-528] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:17,569 [Worker-528] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:43:37,455 [Worker-529] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:37,456 [Worker-529] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:43:37,457 [Worker-529] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:37,457 [Worker-529] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:43:38,475 [Worker-528] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:38,477 [Worker-528] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:43:38,478 [Worker-528] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:43:38,478 [Worker-528] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:46:23,480 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:46:23,481 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:46:23,488 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:46:23,488 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:46:28,453 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:46:28,453 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:46:28,456 [Worker-518] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:46:28,457 [Worker-518] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 16:58:04,618 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:58:04,622 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 16:58:04,623 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 16:58:04,624 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 17:10:43,520 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:10:43,522 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 17:10:43,526 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:10:43,527 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 17:47:06,808 [Worker-530] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:47:06,812 [Worker-530] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 17:47:06,815 [Worker-530] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:47:06,815 [Worker-530] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 17:50:25,555 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:50:25,556 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 17:50:25,557 [Worker-522] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 17:50:25,558 [Worker-522] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources
+2016-06-23 18:07:38,688 [Worker-530] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 18:07:38,690 [Worker-530] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/main/resources
+2016-06-23 18:07:38,691 [Worker-530] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-06-23 18:07:38,691 [Worker-530] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/randyberos/git/honeypot/honeypot/src/test/resources

@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div id="post_bar" >
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div>
+				<div class="row" >
+					<img class="page_pic" src="https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/12919678_10154075260580786_667210516701982445_n.png?oh=c4f7ed2b513de66a23ef35f98ba1dedb&amp;oe=57D3B8FF">
+					<a target="_blank" class="postPanel_linkToPage profile_id_115081940785" href="http://www.facebook.com/115081940785">Motolite</a>
+					<span>shared a</span>
+					<a target="_blank" href="http://www.facebook.com/115081940785/posts/10154199284210786" id="post_type">picture</a>
+					<span> - </span>
+					<a target="_blank" class="postPanel_date" href="http://www.facebook.com/115081940785/posts/10154199284210786" id="post_time">June 12 1:00 PM</a>
+				</div>
+				<div class="row" >
+					<div class="postPanel_textContainer"><p id="post_message">Araw ng Kalayaan ngayon. Para sa 'yo, ano ang ibig sabihin ng pagiging Pilipino?</p></div>
+				</div>
+				<div class="row" >
+					<a target="_blank" id="post_link">
+						<div class="col-md-4">
+							<img class="post_pic" id="post_pic">
+						</div>
+				    	<div class="col-md-8">
+				    		<span ><p>Timeline Photos</p></span>
+							<span >facebook.com</span>
+				    	</div>
+				    </a>
+				</div>
+				<div class="row" >
+					<span id="post_likes">22</span><img class="post_status" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bot%C3%B3n_Me_gusta.svg/400px-Bot%C3%B3n_Me_gusta.svg.png" >
+					<span id="post_comments">22</span><img class="post_status" src="http://snapchat-download.net/wp-content/uploads/2015/10/snapchat-blue-bordered-dialog-icon-mean.png" >
+					<span id="post_shares">22</span><img class="post_status" src="http://icons.iconarchive.com/icons/saki/nuoveXT-2/128/Actions-blue-arrow-redo-icon.png" >
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

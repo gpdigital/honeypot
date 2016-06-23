@@ -6,7 +6,7 @@
         FB.init({
           appId      : '1567078173606071',
           xfbml      : true,
-          version    : 'v2.5'
+          version    : 'v2.6'
         });
         FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
@@ -57,88 +57,186 @@
       document.getElementById('comment_reply').style.display = 'none';
       document.getElementById('filter_list').style.display = 'none';
       document.getElementById('comment_filter').innerHTML = '';
+      document.getElementById('page_info').style.display = 'block';
     	  document.getElementById('comment_filter2').innerHTML = ''; 
 //      FB.api('/'+document.getElementById('page_name').value, 'GET', {fields: 'name,about,founded,likes'}, function(response) {
-    FB.api('/'+page, 'GET', {fields: 'name,about,founded,likes'}, function(response) {
-    	document.getElementById('page_info').style.display = 'block';
-        document.getElementById('page_info').innerHTML = 
-          "Page Name: " + response.name + "<br>" + 
-          "About: " + response.about + "<br>" + 
-          "Founded: " + response.founded + "<br>" + 
-          "Likes: " + response.likes + "<br><br>";
+    FB.api('/'+page, 'GET', {fields: 'name,id,link,fan_count,picture,about'}, function(response) {
+//    	document.getElementById('page_info').style.display = 'block';
+//        document.getElementById('page_info').innerHTML = 
+//          "Page Name: " + response.name + "<br>" + 
+//          "About: " + response.about + "<br>" + 
+//          "Founded: " + response.founded + "<br>" + 
+//          "Likes: " + response.likes + "<br><br>";
+    	document.getElementById('page_picture').src = response.picture.data.url;
+    	document.getElementById('page_link').href = response.link;
+    	document.getElementById('page_link').innerHTML = response.name;
+    	document.getElementById('page_about').innerHTML = 'About: ' + response.about;
+    	document.getElementById('page_likes').innerHTML = 'Likes: ' + response.fan_count;
+    	
         console.log(response);
       });
+    
       getPagePost(page);
     }
 
     function getPagePost(page){
-      FB.api('/'+page, 'GET', {fields: 'posts{id,message,shares,likes.limit(0).summary(true),comments.limit(0).summary(true)}'}, function(response) {
-        //getLikesList2('74646332592173_1052192031504265', '0', '');
-        document.getElementById('page_post').style.display = 'block';
-        //document.getElementById('page_post').innerHTML = JSON.stringify(response.posts.data[0]);
-        //alert("wwws");
-        //alert(JSON.stringify(response));
-        var dummy;
-        dummy = '<table border = "1" style = "width:100%" class="table" ><tr><td style="width:10%" >ID</td><td style="width:10%" >Shares</td><td style="width:10%" >Likes</td><td style="width:10%" >Comments</td><td style="width:60%" >Message</td></tr>';
+    	$("#page_post").load('getPagePost');
+      FB.api('/'+page, 'GET', {fields: 'posts.limit(10){created_time,id,message,picture,type,link,comments.limit(0).summary(true),likes.limit(0).summary(true),shares}'}, 
+    		  function(response) {
 
-        //alert("id " + response.posts.data[0].id + "\nshares: " + response.posts.data[0].shares.count + "\nlikes: "+response.posts.data[0].likes.summary.total_count+"\ncomments: "+response.posts.data[0].comments.summary.total_count);
-        //console.log(dummy);
-        //console.log(response);
-        for(var i = 0; i < (response.posts.data).length; i++){
-          //console.log(i);
-          dummy = dummy + '<tr><td style="width:10%" >' + response.posts.data[i].id + '</td><td style="width:10%" >';
-          if("shares" in response.posts.data[i])
-            dummy = dummy + response.posts.data[i].shares.count;
-           dummy = dummy + '</td><td style="width:10%" >' + response.posts.data[i].likes.summary.total_count + '<br><button onclick="getLikesList(' + "'" + response.posts.data[i].id + "' ,'0',''" + ')" >Likes</button></td><td style="width:10%" >' + response.posts.data[i].comments.summary.total_count + '<br><button onclick="getCommentsList(' + "'" + response.posts.data[i].id + "','0',''" + ')" >Comments</button></td><td style="width:60%" >';
-          if("message" in response.posts.data[i])
-            dummy = dummy + response.posts.data[i].message;
-          else
-            dummy = dummy + "no message";
-          dummy = dummy + '</td></tr>';
-        }
-        //document.getElementById('page_post').innerHTML = dummy + '</table>';
-        dummy = dummy + '</table>';
-        var dum2 = '<div class="container-fluid"><div><div class="panel panel-default"><div class="panel-heading">Posts Summaries</div><div class="panel-body"><div class="row"><div id="bar-example2" style="height: 250px;"></div></div></div></div></div></div>';
-        document.getElementById('page_post').innerHTML = dum2;
-        console.log('wew');
+        document.getElementById('page_post').style.display = 'block';
         
-        var dat = new Array();
-        for(var i = 0; i < (response.posts.data).length; i++){
-            
-            var y = response.posts.data[i].id;
-            var a;
-            if("shares" in response.posts.data[i])
-              a = response.posts.data[i].shares.count;
-            else
-            	a = 0;
-            var b = response.posts.data[i].likes.summary.total_count;
-            var c = response.posts.data[i].comments.summary.total_count;
-            var datain = {y: y,a: a,b: b,c: c};
-            dat.push(datain);
-          }
-        console.log('mores start');
-        $.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
-          $.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
-        	  console.log('mores');
-                
-                
-                Morris.Bar({
-                   element: 'bar-example2',
-                   data: dat,
-                   xkey: 'y',
-                   ykeys: ['a', 'b', 'c'],
-                   labels: ['shares', 'likes', 'comments']
-                }).on('click', function(i, row){
-                	  console.log(i, row);
-                	  console.log(row.y);
-                	  getCommentsList(row.y,0,'');
-                });
-            
-          });
-          });
+        var bar = [];
+		var bar_xkey = ['y'];
+		var bar_ykey = ['a', 'b', 'c'];
+		var bar_label = ['Likes', 'Comments', 'Shares'];
+		var content = [];
+		console.log(response);
+		for(var i = 0; i < (response.posts.data).length; i++){
+			var bar_row = {};
+			var d = new Date(response.posts.data[i].created_time);
+			bar_row['y'] = d.toDateString() + ' ' + d.toLocaleTimeString();
+			bar_row['a'] = response.posts.data[i].likes.summary.total_count;
+			bar_row['b'] = response.posts.data[i].comments.summary.total_count;
+			if("shares" in response.posts.data[i])
+				bar_row['c'] = response.posts.data[i].shares.count;
+			else
+				bar_row['c'] = 0; 
+			bar[i] = bar_row;
+
+			var content_row = {};
+			content_row['id'] = response.posts.data[i].id;
+			if("message" in response.posts.data[i])
+				content_row['message'] = response.posts.data[i].message;
+			else
+				content_row['message'] = '';
+			content_row['picture'] = response.posts.data[i].picture;
+			content_row['link'] = response.posts.data[i].link;
+			content_row['created_time'] = d.toDateString() + ' ' + d.toLocaleTimeString();
+			content_row['likes'] = response.posts.data[i].likes.summary.total_count;
+			content_row['comments'] = response.posts.data[i].comments.summary.total_count;
+			content_row['type'] = response.posts.data[i].type;
+			if("shares" in response.posts.data[i])
+				content_row['shares'] = response.posts.data[i].shares.count;
+			else
+				content_row['shares'] = 0;
+			content[i] = content_row;
+		}
+		console.log(bar);
+		console.log(bar_xkey);
+		console.log(bar_ykey);
+		console.log(bar_label);
+		graph(bar, bar_xkey, bar_ykey, bar_label, content);
+        
+//        var dummy;
+//        dummy = '<table border = "1" style = "width:100%" class="table" ><tr><td style="width:10%" >ID</td><td style="width:10%" >Shares</td><td style="width:10%" >Likes</td><td style="width:10%" >Comments</td><td style="width:60%" >Message</td></tr>';
+//
+//        //alert("id " + response.posts.data[0].id + "\nshares: " + response.posts.data[0].shares.count + "\nlikes: "+response.posts.data[0].likes.summary.total_count+"\ncomments: "+response.posts.data[0].comments.summary.total_count);
+//        //console.log(dummy);
+//        //console.log(response);
+//        for(var i = 0; i < (response.posts.data).length; i++){
+//          //console.log(i);
+//          dummy = dummy + '<tr><td style="width:10%" >' + response.posts.data[i].id + '</td><td style="width:10%" >';
+//          if("shares" in response.posts.data[i])
+//            dummy = dummy + response.posts.data[i].shares.count;
+//           dummy = dummy + '</td><td style="width:10%" >' + response.posts.data[i].likes.summary.total_count + '<br><button onclick="getLikesList(' + "'" + response.posts.data[i].id + "' ,'0',''" + ')" >Likes</button></td><td style="width:10%" >' + response.posts.data[i].comments.summary.total_count + '<br><button onclick="getCommentsList(' + "'" + response.posts.data[i].id + "','0',''" + ')" >Comments</button></td><td style="width:60%" >';
+//          if("message" in response.posts.data[i])
+//            dummy = dummy + response.posts.data[i].message;
+//          else
+//            dummy = dummy + "no message";
+//          dummy = dummy + '</td></tr>';
+//        }
+//        //document.getElementById('page_post').innerHTML = dummy + '</table>';
+//        dummy = dummy + '</table>';
+//        var dum2 = '<div class="container-fluid"><div><div class="panel panel-default"><div class="panel-heading">Posts Summaries</div><div class="panel-body"><div class="row"><div id="bar-example2" style="height: 250px;"></div></div></div></div></div></div>';
+//        document.getElementById('page_post').innerHTML = dum2;
+//        console.log('wew');
+//        
+//        var dat = new Array();
+//        for(var i = 0; i < (response.posts.data).length; i++){
+//            
+//            var y = response.posts.data[i].id;
+//            var a;
+//            if("shares" in response.posts.data[i])
+//              a = response.posts.data[i].shares.count;
+//            else
+//            	a = 0;
+//            var b = response.posts.data[i].likes.summary.total_count;
+//            var c = response.posts.data[i].comments.summary.total_count;
+//            var datain = {y: y,a: a,b: b,c: c};
+//            dat.push(datain);
+//          }
+//        console.log('mores start');
+//        $.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
+//          $.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
+//        	  console.log('mores');
+//                
+//                
+//                Morris.Bar({
+//                   element: 'bar-example2',
+//                   data: dat,
+//                   xkey: 'y',
+//                   ykeys: ['a', 'b', 'c'],
+//                   labels: ['shares', 'likes', 'comments']
+//                }).on('click', function(i, row){
+//                	  console.log(i, row);
+//                	  console.log(row.y);
+//                	  getCommentsList(row.y,0,'');
+//                });
+//            
+//          });
+//          });
         
       });
     }
+    
+    function graph(bar, bar_xkey, bar_ykey, bar_label, content){
+		console.log(content);
+		$.getScript(
+				'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
+				function() {
+					$
+							.getScript(
+									'http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',
+									function() {
+											
+										Morris
+												.Bar({
+													barGap:4,
+														barSizeRatio:0.55,
+													resize: true,
+													element : 'post_bar',
+													data: bar,
+											        xkey: bar_xkey,
+											        ykeys: bar_ykey,
+											        labels: bar_label,
+												    hoverCallback: function(index, options, cont) {
+												    	var dum = content[index].message + '<br>';
+												    	dum = dum + '<img class="post_pic" src="'+content[index].picture+'">'
+												        //return(content[index].message);
+												    	return(dum);
+												    }
+												}).on('click', function(i, row){
+								                	console.log(i, row);
+								                	console.log(row.y);
+								                	showPost(i, content);
+								                });
+
+									});
+				});
+    }
+    
+    function showPost(i, content){
+		document.getElementById('post_pic').src = content[i].picture;
+		document.getElementById('post_link').href = content[i].link;
+		document.getElementById('post_message').innerHTML = content[i].message;
+		document.getElementById('post_type').innerHTML = content[i].type;
+		document.getElementById('post_time').innerHTML = content[i].created_time;
+		document.getElementById('post_likes').innerHTML = content[i].likes;
+		document.getElementById('post_comments').innerHTML = content[i].comments;
+		document.getElementById('post_shares').innerHTML = content[i].shares;
+		getCommentsList(content[i].id,0,'')
+	}
 
     var datus = new Array();
     var comment_counter;
@@ -146,7 +244,6 @@
     function getCommentsList(post_id, state, next){
       document.getElementById('comments_list').style.display = 'block';
       document.getElementById('post_info').style.display = 'block';
-      document.getElementById('page_post').style.display = 'none';
       document.getElementById('filter_list').style.display = 'block';
       
       if(state==0){
@@ -227,7 +324,7 @@
       document.getElementById('comments_list').style.display = 'none';
       document.getElementById('comment_filter').style.display = 'block';
       document.getElementById('comment_filter2').style.display = 'block';
-      document.getElementById('page_post').style.display = 'none';
+      document.getElementById('page_post').style.display = 'block';
       var dummy;
       var red = 0;
       var yellow = 0;

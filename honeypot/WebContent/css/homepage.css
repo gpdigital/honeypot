@@ -172,3 +172,19 @@ button.btn:active:focus, button.btn.active:focus {
   width: 200px;
   height: 200px;
 }
+
+.page_pic {
+    width: 20px;
+    height: 20px;
+} 
+.post_pic {
+    width: 100px;
+    height: 100px;
+} 
+.post_status {
+	width: 10px;
+    height: 10px;
+}
+.like_icon {
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bot%C3%B3n_Me_gusta.svg/400px-Bot%C3%B3n_Me_gusta.svg.png");
+}

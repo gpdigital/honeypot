@@ -146,6 +146,18 @@ public class BaseController extends BaseControllerAbstract{
 
 		return "fragment/interest_menu";
 	}
+	
+	@RequestMapping(value = "/getPageInfo", method = RequestMethod.GET)
+	public String getPageInfo() {
+
+		return "fragment/page_info";
+	}
+	
+	@RequestMapping(value = "/getPagePost", method = RequestMethod.GET)
+	public String getPagePost() {
+
+		return "fragment/page_post";
+	}
 
 	// @RequestMapping({ "/controller/registerPage" })
 	// public ModelAndView goToRegisterPage(Model model) {

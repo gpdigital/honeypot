@@ -54,6 +54,7 @@ function content() {
 	var dum = '<div id="listahantab" ></div><div id="page_search" style="display:none" ></div><div id="page_info" style="display:none" ></div><div id="page_post" style="display:none" ></div><div id="post_info" style="display:none" ></div><div id="filter_list" style="display:none" ></div><div id="comments_list" style="display:none" ></div><div id="likes_list" style="display:none" ></div><div id="comment_filter" style="display:none" ></div><div id="comment_filter2" style="display:none" ></div><div id="comment_info" style="display:none" ></div><div id="comment_reply" style="display:none" ></div>';
 	$("#main_section").html(dum);
 	$("#listahantab").load('getSummary');
+	$("#page_info").load('getPageInfo');
 }
 
 function listChange(page){
